@@ -2,7 +2,7 @@
 
 ## slope: Identify Slope Patterns and Processes
 
-O pacote `slope` fornece diferentes abordagens geomorfométricas para detecção de padrões de formas de encostas e dinâmica de fluxos de detritos baseados em Modelos Digitais de Elevação (MDE).
+The slope package provides different geomorphometric approaches for detecting slope landform patterns and debris flow dynamics based on Digital Elevation Models (DEMs).
 
 #### Install:
 ```R
