@@ -11,7 +11,7 @@
 #'@examples
 #' library(terra)
 #' dem <- terra::rast(system.file("ex/elev.tif", package="terra"))
-#' dem_fill <- slope::fill(dem, 'fill.tif')
+#' dem_fill <- slope::fill(dem, system.file("ex/fill.tif'))
 #' plot(dem_fill$fill)
 #'@export
 fill <- function(x, y){
