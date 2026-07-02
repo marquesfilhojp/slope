@@ -38,10 +38,11 @@ physical_geomorphometry_plot <- function(x){
     "Convex-Convex"    = "#FFD700"
   )
 
-  return(ggplot2::ggplot(slope, ggplot2::aes(y = slopes, x = Percent, fill = slopes)) +
-           geom_bar(stat = "identity", show.legend = F)+
-           scale_fill_manual(values = colours) +
-           theme_classic()+
-           xlab("Percent %") +
-           ylab("Slope Forms"))
+  return(
+    ggplot2::ggplot(slope, ggplot2::aes(x = Percent, y = slopes, fill = slopes)) +
+      ggplot2::geom_bar(stat = "identity", show.legend = FALSE) +
+      ggplot2::scale_fill_manual(values = colours) +
+      ggplot2::theme_classic() +
+      ggplot2::labs(x = "Percent %", y = "Slope Forms")
+  )
 }
