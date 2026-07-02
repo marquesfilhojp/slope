@@ -38,7 +38,7 @@ physical_geomorphometry_plot <- function(x){
     "Convex-Convex"    = "#FFD700"
   )
 
-  return(ggplot(slope, aes(y = slopes, x = Percent, fill = slopes)) +
+  return(ggplot2::ggplot(slope, aes(y = slopes, x = Percent, fill = slopes)) +
            geom_bar(stat = "identity", show.legend = F)+
            scale_fill_manual(values = colours) +
            theme_classic()+

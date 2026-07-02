@@ -15,7 +15,7 @@
 #' plot(dem_fill)
 #'@export
 fill <- function(x, y){
-  wbt_fill_depressions(dem = terra::sources(x),
+  whitebox::wbt_fill_depressions(dem = terra::sources(x),
                        output = y,
                        fix_flats = T,
                        flat_increment = NULL,
