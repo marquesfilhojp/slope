@@ -11,9 +11,10 @@ library(remotes)
 remotes::install_github("marquesfilhojp/slope")
 library(slope)
 
-''''
+```
 
 Slope package have six functions for geomorphometric analysis: I) fill( ), II) hillshade, III) slopeforms( ), IV) slider( ), V) physical_geomorphometry( ) and VI) physical_geomorphometry_plot( ) and see details in documentation of the slope package R. 
 
-Slope package were building in Laboratory of Environmental Geomorphology and Soils Degradation (LAGESOLOS) and Space, 
+Slope package were building in Laboratory of Environmental Geomorphology and Soils Degradation (LAGESOLOS) and Space, Remote Sensing Laboratory and Environmental Analysis in Federal University of Rio de Janeiro.
+
 
