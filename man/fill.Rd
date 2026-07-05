@@ -15,9 +15,3 @@ fill(x, y)
 Performs the filling of spurious depressions in DEMs,
 \code based on the wbt_fill_depressions() function (Lindsay, 2016)
 }
-\examples{
-library(terra)
-dem <- terra::rast(system.file("ex/elev.tif", package="terra"))
-dem_fill <- slope::fill(dem, 'fill.tif')
-plot(dem_fill$fill)
-}
