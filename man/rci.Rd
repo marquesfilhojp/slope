@@ -4,7 +4,7 @@
 \alias{rci}
 \title{\strong Roughness Concentration Index}
 \usage{
-rci(x, sp_range, crs, kernel, aoi)
+rci(x, sp_range, crs, aoi, unit)
 }
 \arguments{
 \item{x}{Input DEM raster file.}
@@ -14,6 +14,8 @@ rci(x, sp_range, crs, kernel, aoi)
 \item{crs}{Input geodesic reference systems.}
 
 \item{aoi}{Area of interest in spatvect.}
+
+\item{unit}{Metrics units in square kilometers.}
 }
 \description{
 Calculates the Roughness Concentration Index (RCI) based on the methodology of Sampaio and Augustin (2014).
@@ -22,6 +24,6 @@ Calculates the Roughness Concentration Index (RCI) based on the methodology of S
 library(terra)
 aoi <- terra:vect(system.file("ex/elev.shp", package = "terra"))
 dem <- terra:rast(system.file("ex/elev.shp", package = "terra"))
-r <- slope::rci(dem, 300, 'EPSG:5880', aoi)
+r <- slope::rci(dem, 300, 'EPSG:5880', aoi, 1000000)
 plot(r)
 }
