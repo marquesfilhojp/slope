@@ -49,5 +49,4 @@ physical_geomorphometry_plot <- function(x){
            theme_classic()+
            xlab("Percent %") +
            ylab("Slope Forms"))
-  )
 }
