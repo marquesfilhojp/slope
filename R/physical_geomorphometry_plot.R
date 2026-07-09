@@ -39,14 +39,14 @@ physical_geomorphometry_plot <- function(x){
   )
 
   return(ggplot(slope, aes(y = Slopes, x = Percent, fill = Slopes)) +
-           geom_bar(stat = "identity", show.legend = F)+
-           geom_label(aes(label = Percent),
+           ggplot2::geom_bar(stat = "identity", show.legend = F)+
+           ggplot2::geom_label(aes(label = Percent),
                       color = "white",
                       position = position_stack(vjust = 0.5),
                       show.legend = FALSE) +
-           coord_polar(theta = "y")+
-           scale_fill_manual(values = colours) +
-           theme_classic()+
-           xlab("Percent %") +
-           ylab("Slope Forms"))
+           ggplot2::coord_polar(theta = "y")+
+           ggplot2::scale_fill_manual(values = colours) +
+           ggplot2::theme_classic()+
+           ggplot2::xlab("Percent %") +
+           ggplot2::ylab("Slope Forms"))
 }
