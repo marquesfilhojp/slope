@@ -20,6 +20,7 @@ Calculates the area and percentages of slope forms for tabular visualization.
 }
 \examples{
 library(terra)
+library(slope)
 dem <- terra::rast(system.file("ex/elev.tif", package="terra"))
 shade <- slope::hillshade(dem, 3, 45, 315)
 plot(shade)

@@ -12,6 +12,7 @@
 #'
 #'@examples
 #' library(terra)
+#' library(slope)
 #' aoi <- terra:vect(system.file("ex/elev.shp", package = "terra"))
 #' dem <- terra:rast(system.file("ex/elev.shp", package = "terra"))
 #' r <- slope::rci(dem, 300, 'EPSG:5880', aoi, 1000000)

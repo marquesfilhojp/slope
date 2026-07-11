@@ -8,6 +8,7 @@
 #'
 #'@examples
 #' library(terra)
+#' library(slope)
 #' sf <- terra::rast('slopeforms.tif')
 #' pgv <- slope::physical_geomorphometry_plot(sf)
 #' plot(pgv)
