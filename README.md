@@ -2,7 +2,7 @@
 
 ## slope: Identify Slope Patterns and Processes
 
-Slope package provides different geomorphometric approaches for detecting slope forms patterns, based in nine type básics (Dikau, 1989), roughness concentration index (Sampaio and Augustin, 2014) and debris flow dynamics based on Digital Elevation Models (DEMs).
+Slope package provides different geomorphometric approaches for detecting slope forms patterns, based in nine type básics (Dikau, 1989), roughness concentration index (Sampaio and Augustin, 2014), Ridges, Tops and Valleys (Silveira and Silveira, 2020) and debris flow dynamics based on Digital Elevation Models (DEMs).
 
 #### For instalation:
 ```R
