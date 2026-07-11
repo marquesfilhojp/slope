@@ -14,6 +14,7 @@ Calculates the area and percentages of slope forms for tabular visualization.
 }
 \examples{
 library(terra)
+library(slope)
 sf <- terra::rast('slopeforms.tif')
 pg <- slope::physical_geomorphometry(sf)
 plot(pg)

@@ -24,6 +24,7 @@
 #'
 #'@examples
 #' library(terra)
+#' library(slope)
 #' dem <- terra::rast(system.file("ex/elev.tif", package="terra"))
 #' sf <- slope::slopeforms(dem, 7, 'EPSG:5880')
 #' plot(sf)
