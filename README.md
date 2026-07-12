@@ -15,4 +15,6 @@ library(slope)
 
 Slope package were building in Laboratory of Environmental Geomorphology and Soils Degradation (LAGESOLOS) and Space, Remote Sensing Laboratory and Environmental Analysis in Federal University of Rio de Janeiro.
 
+For citation of slope package. 
 
+Marques Filho, J. da P. (2026). marquesfilhojp/slope: slope: Identify slope patterns and processes (Version v0.3.2) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.21325742
