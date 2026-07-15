@@ -11,8 +11,7 @@ valleys(x, f, c)
 
 \item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
 
-\item{type}{Numeric. Each number represents a specific landform, for
-\code example: (1) Flat-bottomed Valleys, (2) Open Valleys, and (3) Incised Valleys}
+\item{type}{Numeric. Each number represents a specific landform, for example: (1) Flat-bottomed Valleys, (2) Open Valleys, and (3) Incised Valleys}
 }
 \description{
 Detects different types of valleys, based on Silveira and Silveira (2020).

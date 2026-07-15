@@ -12,6 +12,7 @@
 #' sf <- terra::rast('slopeforms.tif')
 #' pg <- slope::physical_geomorphometry(sf)
 #' plot(pg)
+#'@export
 physical_geomorphometry <- function(x){
   x <- terra::rast(terra::sources(x))|>
     terra::as.polygons()|>

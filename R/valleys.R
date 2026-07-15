@@ -10,8 +10,7 @@
 #'
 #'@param x Input DEM raster file.
 #'@param sp_range Numeric. Number of neighbor cells for multiscalar analysis.
-#'@param type Numeric. Each number represents a specific landform, for
-#'\code example: (1) Flat-bottomed Valleys, (2) Open Valleys, and (3) Incised Valleys
+#'@param type Numeric. Each number represents a specific landform, for example: (1) Flat-bottomed Valleys, (2) Open Valleys, and (3) Incised Valleys
 #'
 #'@examples
 #' library(terra)

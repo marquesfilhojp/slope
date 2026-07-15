@@ -13,6 +13,7 @@
 #' dem <- terra::rast(system.file("ex/elev.tif", package="terra"))
 #' print(dem)
 #' mma <- slope::minimum_mappable_area(100000, 30)
+#'@export
 mininum_mappable_area <- function(scale, res){
   ds <- (scale * 0.002)**2
   mmu <- ds/(res^2)

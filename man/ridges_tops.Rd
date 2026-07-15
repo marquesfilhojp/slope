@@ -11,8 +11,7 @@ ridges_tops(x, sp_range, type)
 
 \item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
 
-\item{type}{Numeric. Each number represents a specific landform, for
-\code example: (1) Convex Hilltops and Interfluves, (2) Sharp Crests, and (3) Ridges}
+\item{type}{Numeric. Each number represents a specific landform, for example: (1) Convex Hilltops and Interfluves, (2) Sharp Crests, and (3) Ridges}
 }
 \description{
 Detects different types of Ridges and Tops, based on Silveira and Silveira (2020).

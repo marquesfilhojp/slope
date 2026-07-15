@@ -12,6 +12,5 @@ fill(x, y)
 \item{y}{Output filled raster file.}
 }
 \description{
-Performs the filling of spurious depressions in DEMs,
-\code based on the wbt_fill_depressions() function (Lindsay, 2016)
+Performs the filling of spurious depressions in DEMs based on the wbt_fill_depressions() function (Lindsay, 2016).
 }

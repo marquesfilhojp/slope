@@ -10,8 +10,7 @@
 #'
 #'@param x Input DEM raster file.
 #'@param sp_range Numeric. Number of neighbor cells for multiscalar analysis.
-#'@param type Numeric. Each number represents a specific landform, for
-#'\code example: (1) Convex Hilltops and Interfluves, (2) Sharp Crests, and (3) Ridges
+#'@param type Numeric. Each number represents a specific landform, for example: (1) Convex Hilltops and Interfluves, (2) Sharp Crests, and (3) Ridges
 #'
 #'@examples
 #' library(terra)
