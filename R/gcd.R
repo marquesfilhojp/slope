@@ -4,8 +4,10 @@
 #'
 #'Detects geomorphic change detection based in Wheathon et al. (2010).
 #'
-#'@param z_actual Input DEM raster file in second moment in time.
-#'@param z_dem Input DEM raster file in first moment in time.
+#'@param z_actual Input DEM raster file in second moment in time, using the
+#'\code same Earth Gravitational Model (EGM) for reduction in vertical error.
+#'@param z_dem Input DEM raster file in first moment in time,  using the
+#'\code same Earth Gravitational Model (EGM) for reduction in vertical error.
 #'@param crs Input geodesic reference systems.
 #'@param type Choice between in deposition [0] or erosion [1].
 #'
@@ -35,7 +37,7 @@ geomorphic_change_detection <- function(z_actual, z_dem, crs, type){
     }
     z_volume <- sum(unlist(volume), na.rm = T)|>
       round(2)
-    plot(terra::ifel(dod > 0, dod, 0))
+    gcd <- terra::ifel(dod > 0, dod, 0)
   } else if(type == 1){
     dod_p <- terra::as.points(dod)|>
       sf::st_as_sf()
@@ -48,9 +50,10 @@ geomorphic_change_detection <- function(z_actual, z_dem, crs, type){
     }
     z_volume <- sum(unlist(volume), na.rm = T)|>
       round(2) * -1
-    plot(terra::ifel(dod < 0, dod, 0))
+    gcd <- terra::ifel(dod < 0, dod, 0)
   } else{
     print('Choice between type [0] deposition or [1] erosion')
   }
-  return(message(paste(z_volume, "m³")))
+  message(paste(z_volume, "m³"))
+  return(gcd)
 }
