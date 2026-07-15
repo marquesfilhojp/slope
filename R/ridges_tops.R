@@ -21,7 +21,7 @@
 #'@export
 ridges_tops <- function(x, sp_range, type){
   x <- terra::rast(terra::sources(x))
-  maxmin <-  terra::focal(sp_range, f, 'min')|>
+  maxmin <-  terra::focal(x, sp_range, 'min')|>
     terra::focal(sp_range, 'max')
   wth <- x - maxmin
   area <- terra::project(dem, 'EPSG:5880')|>

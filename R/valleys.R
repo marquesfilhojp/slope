@@ -20,10 +20,10 @@
 #' v <- slope::valleys(dem, 7, 3)
 #' plot(v)
 #'@export
-valleys <- function(x, f, c){
+valleys <- function(x, sp_range, c){
   x <- terra::rast(terra::sources(x))
-  minmax <- terra::focal(x, f, 'max')|>
-    terra::focal(f, 'min')
+  minmax <- terra::focal(x, sp_range, 'max')|>
+    terra::focal(sp_range, 'min')
   bth <- minmax - x
   fa <- terra::terrain(x, v = 'flowdir', neighbors = 8, unit = 'degrees')|>
     terra::flowAccumulation()
