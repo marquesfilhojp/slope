@@ -2,7 +2,7 @@
 
 ## slope: An R Package Identify Slope Patterns and Processes
 
-Slope is R experimental package who provides different geomorphometric approaches, for example: Nine type básics of slope forms(Dikau, 1989), Transformed Curvature (Evans, 1984), Transformed Slope (Csillik et al. 2015), Dissection Index (Evans, 1977), Surface Relief Ratio (Berry, 2002), Roughness Concentration Index (Sampaio and Augustin, 2014), Ridges, Tops and Valleys (Silveira and Silveira, 2020), Geomorphic Change Detection (Wheaton et al. 2010), Sediment Connectivity (Cavalli et al. 2013) and slider module, exclusive to the slope R package (marquesfilho, 2026). 
+Slope is R experimental package who provides different geomorphometric approaches, for example: Nine type básics of slope forms (Dikau, 1989), Transformed Curvature (Evans, 1984), Transformed Slope (Csillik et al. 2015), Dissection Index (Evans, 1977), Surface Relief Ratio (Berry, 2002), Roughness Concentration Index (Sampaio and Augustin, 2014), Ridges, Tops and Valleys (Silveira and Silveira, 2020), Geomorphic Change Detection (Wheaton et al. 2010), Sediment Connectivity (Cavalli et al. 2013) and slider module, exclusive to the slope R package (marquesfilho, 2026). 
 
 #### For instalation:
 ```R
