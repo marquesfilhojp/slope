@@ -4,7 +4,7 @@
 \alias{valleys}
 \title{\strong Valleys (Black Top Hat)}
 \usage{
-valleys(x, f, c)
+valleys(x, sp_range, c)
 }
 \arguments{
 \item{x}{Input DEM raster file.}
