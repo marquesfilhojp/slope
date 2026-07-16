@@ -1,8 +1,8 @@
-# 'Dissection Index
+# 'Surface Relief Ratio
 #'
-#'\strong Dissection Index
+#'\strong Surface Relief Ratio
 #'
-#'Detects spatial patterns of dissection, based in Evans (1972).
+#'Calculates Surface Relief Ratio, based Berry (2002).
 #'
 #'@param x Input DEM raster file.
 #'@param sp_range Numeric. Number of neighbor cells for multiscalar analysis.
@@ -11,14 +11,16 @@
 #' library(terra)
 #' library(slope)
 #' dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
-#' di <- slope::dissection_index(dem, 7)
-#' plot(di)
+#' srr <- slope::surface_relief_ratio(dem, 7)
+#' plot(srr)
 #'@export
-dissection_index <- function(x, sp_range){
+surface_relief_ratio <- function(x, sp_range){
   max <- x|>
     terra::focal(sp_range, 'max')
   min <- x|>
     terra::focal(sp_range, 'min')
-  di <- (x - min)/(max - min)
-  return(di)
+  mean <- x|>
+    terra::focal(sp_range, 'mean')
+  srr <- (mean - min)/(max - min)
+  return(srr)
 }

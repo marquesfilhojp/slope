@@ -15,7 +15,7 @@
 #'@examples
 #' library(terra)
 #' library(slope)
-#' dem <- terra:rast(system.file("ex/elev.shp", package = "terra"))
+#' dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 #' dem_fill <- slope::fill(dem, system.file("ex/fill.tif'))
 #' v <- slope::valleys(dem, 7, 3)
 #' plot(v)

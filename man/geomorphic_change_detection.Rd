@@ -11,9 +11,9 @@ geomorphic_change_detection(z_actual, z_dem, crs, type)
 
 \item{z_dem}{Input DEM raster file in first moment in time,  using the same Earth Gravitational Model (EGM) for reduction in vertical error.}
 
-\item{crs}{Input geodesic reference systems.}
+\item{crs}{Numeric. Input geodesic reference systems.}
 
-\item{type}{Choice between in deposition [0] or erosion [1].}
+\item{type}{Numeric. Choice between deposition [0] or erosion [1].}
 }
 \description{
 Detects geomorphic change detection based in Wheathon et al. (2010).

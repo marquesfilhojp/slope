@@ -13,7 +13,7 @@
 #'@examples
 #' library(terra)
 #' library(slope)
-#' dem <- terra:rast(system.file("ex/elev.shp", package = "terra"))
+#' dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 #' tc <- slope::transformed_slope(dem, 7, 0.1, 'EPSG:5880', 1)
 #' plot(tc)
 #'@export

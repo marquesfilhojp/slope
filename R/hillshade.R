@@ -12,7 +12,7 @@
 #'@examples
 #' library(terra)
 #' library(slope)
-#' dem <- terra::rast(system.file("ex/elev.tif", package="terra"))
+#' dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 #' shade <- slope::hillshade(dem, 3, 45, 315)
 #' plot(shade)
 #'@export

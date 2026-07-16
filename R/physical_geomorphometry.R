@@ -9,7 +9,7 @@
 #'@examples
 #' library(terra)
 #' library(slope)
-#' sf <- terra::rast('slopeforms.tif')
+#' sf <- terra::rast('ex/slopeforms.tif', package = "terra")
 #' pg <- slope::physical_geomorphometry(sf)
 #' plot(pg)
 #'@export

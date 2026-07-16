@@ -17,7 +17,7 @@ Calculates minimum mappable area.
 \examples{
 library(terra)
 library(slope)
-dem <- terra::rast(system.file("ex/elev.tif", package="terra"))
+dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 print(dem)
 mma <- slope::minimum_mappable_area(100000, 30)
 }

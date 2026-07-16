@@ -15,7 +15,7 @@
 #'@examples
 #' library(terra)
 #' library(slope)
-#' dem <- terra:rast(system.file("ex/elev.shp", package = "terra"))
+#' dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 #' r <- slope::ridges_tops(dem, 7, 1)
 #' plot(r)
 #'@export

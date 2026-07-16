@@ -14,7 +14,7 @@
 #'@examples
 #' library(terra)
 #' library(slope)
-#' dem <- terra::rast(system.file("ex/elev.tif", package="terra"))
+#' dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 #' sd <- slope::slider(dem, 7, 'EPSG:5880', 21, 25, 11)
 #' plot(sd)
 #'@export
