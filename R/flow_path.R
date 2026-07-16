@@ -2,7 +2,7 @@
 #'
 #'\strong Flow Path
 #'
-#'Performs the flow path in DEMs based on the wbt_flow_accumulation_full_workflow() function (Lindsay, 2016) for calculates sediment connectivity (Cavalli et al. 2013).
+#'Performs the flow path in DEMs based on the wbt_downslope_distance_to_stream() function (Lindsay, 2016) for calculates sediment connectivity (Cavalli et al. 2013).
 #'
 #'@param x Input DEM raster file.
 #'@param y Input Streams raster file.
