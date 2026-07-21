@@ -17,9 +17,9 @@ For citation:
 
 Marques Filho, J. da P. (2026). marquesfilhojp/slope: slope: Identify slope patterns and processes (Version v0.3.2) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.21325742
 
-## Dependências 
+## Dependencies 
 
-Para o adequado desempenho do pacote R slope são necessárias às seguintes dependências. 
+The following dependencies are required for the proper performance of the R package `slope`. 
 . classInt: 
 . ggplot2:
 . MultiscaleDTM:
@@ -28,17 +28,23 @@ Para o adequado desempenho do pacote R slope são necessárias às seguintes dep
 . terra:
 . whitebox:
 
-## Instalação por Sistema Operacional
+## Installation by Operating System
+Currently, the R package `slope` v.0.4.5 has been developed solely for Windows operating systems and Linux distributions such as Debian, Ubuntu, and Linux—specifically version 22.04 LTS Jammy Jellyfish.
 
-# Windows
-É recomendável utilizar a versão R 4.5.x ou superiores e a ferramenta Rtools 45 ou superior, para a instalação do pacote R terra, essencial para o funcionamento do presente pacote.
+### Windows
+It is recommended to use R version 4.5.x or higher and Rtools 45 or higher to install the R package `terra`, which is essential for the operation of this package.
 
-# Linux
+### Linux
 
-Nas distros Linux, como Ubuntu 22.04 LTS (Jammy Jellyfish) e entre outros sistemas similares, recomenda-se a instalação inicial do pacote R terra, para fomentar o funcionamento do presente pacote. 
+On Linux distributions such as Ubuntu 22.04 LTS (Jammy Jellyfish) and other similar systems, it is recommended to initially install the R `terra` package to ensure the proper functioning of this package.
 
-´´´bash
+```bash
 sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
 sudo apt-get update
 sudo apt-get install libgdal-dev libgeos-dev libproj-dev libtbb-dev libnetcdf-dev
-´´´
+```
+This procedure is necessary to install the following libraries for manipulating vector and raster data, GDAL (>= 2.2.3), GEOS (>= 3.4.0), PROJ (>= 4.9.3), netcdf (>=4.1.3), sqlite3 and tbb.
+
+
+
+
