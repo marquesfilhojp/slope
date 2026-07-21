@@ -26,7 +26,7 @@ The following dependencies are required for the proper performance of the R pack
 * **sf**:
 * **spatstat**:
 * **terra**:
-. **whitebox**:
+* **whitebox**:
 
 ## Installation by Operating System
 Currently, the R package *slope* v.0.4.5 has been developed solely for *Windows* operating systems and *Linux* distributions such as Debian, Ubuntu, and Linux—specifically **version 22.04 LTS Jammy**. Jellyfish.
