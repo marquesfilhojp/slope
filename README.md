@@ -16,3 +16,29 @@ library(slope)
 For citation:
 
 Marques Filho, J. da P. (2026). marquesfilhojp/slope: slope: Identify slope patterns and processes (Version v0.3.2) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.21325742
+
+## Dependências 
+
+Para o adequado desempenho do pacote R slope são necessárias às seguintes dependências. 
+. classInt: 
+. ggplot2:
+. MultiscaleDTM:
+. sf:
+. spatstat:
+. terra:
+. whitebox:
+
+## Instalação por Sistema Operacional
+
+# Windows
+É recomendável utilizar a versão R 4.5.x ou superiores e a ferramenta Rtools 45 ou superior, para a instalação do pacote R terra, essencial para o funcionamento do presente pacote.
+
+# Linux
+
+Nas distros Linux, como Ubuntu 22.04 LTS (Jammy Jellyfish) e entre outros sistemas similares, recomenda-se a instalação inicial do pacote R terra, para fomentar o funcionamento do presente pacote. 
+
+´´´bash
+sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+sudo apt-get update
+sudo apt-get install libgdal-dev libgeos-dev libproj-dev libtbb-dev libnetcdf-dev
+´´´
