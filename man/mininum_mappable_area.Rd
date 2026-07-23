@@ -2,7 +2,7 @@
 % Please edit documentation in R/mininum_mappable_area.R
 \name{mininum_mappable_area}
 \alias{mininum_mappable_area}
-\title{\strong Minimum Mappable Area}
+\title{Mininum Mappable Area}
 \usage{
 mininum_mappable_area(scale, res)
 }
@@ -12,12 +12,17 @@ mininum_mappable_area(scale, res)
 \item{res}{Numeric. Resolution of DEM.}
 }
 \description{
+\strong{Minimum Mappable Area}
+}
+\details{
 Calculates minimum mappable area.
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 print(dem)
 mma <- slope::minimum_mappable_area(100000, 30)
+}
 }

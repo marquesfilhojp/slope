@@ -1,6 +1,6 @@
-# 'Dissection Index
+#' Dissection Index
 #'
-#'\strong Dissection Index
+#'\strong{Dissection Index}
 #'
 #'Detects spatial patterns of dissection, based in Evans (1972).
 #'
@@ -8,11 +8,13 @@
 #'@param sp_range Numeric. Number of neighbor cells for multiscalar analysis.
 #'
 #'@examples
+#'\dontrun{
 #' library(terra)
 #' library(slope)
 #' dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 #' di <- slope::dissection_index(dem, 7)
 #' plot(di)
+#' }
 #'@export
 dissection_index <- function(x, sp_range){
   max <- x|>

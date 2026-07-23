@@ -1,6 +1,6 @@
-#'Sediment Connectivity
+#' Sediment Connectivity
 #'
-#'\strong Sediment Connectivity
+#'\strong{Sediment Connectivity}
 #'
 #'Calculates sediment connectivity, based in Cavalli et al. (2013)
 #'
@@ -10,6 +10,7 @@
 #'@param fp Input Flow Path raster file.
 #'
 #'@examples
+#'\dontrun{
 #' library(terra)
 #' library(slope)
 #' dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
@@ -17,6 +18,7 @@
 #' fp <- terra:rast(system.file("ex/flow_path.tif", package = "terra"))
 #' ic <- slope::sediment_connectivity(dem, 7, fa, fp)
 #' plot(ic)
+#' }
 sediment_connectivity <- function(x, sp_range, fa, fp){
   s <- x |>
     MultiscaleDTM::Qfit(w = c(3,3), unit = "radians", metrics = "slope", na.rm = T)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/fill.R
 \name{fill}
 \alias{fill}
-\title{\strong Spurious Depressions Filling}
+\title{Fill}
 \usage{
 fill(x, y)
 }
@@ -12,5 +12,8 @@ fill(x, y)
 \item{y}{Output filled raster file.}
 }
 \description{
+\strong{Spurious Depressions Filling}
+}
+\details{
 Performs the filling of spurious depressions in DEMs based on the wbt_fill_depressions() function (Lindsay, 2016).
 }

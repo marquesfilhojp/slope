@@ -1,6 +1,6 @@
-# 'Valleys
+#' Valleys
 #'
-#'\strong Valleys (Black Top Hat)
+#'\strong{Valleys (Black Top Hat)}
 #'
 #'Detects different types of valleys, based on Silveira and Silveira (2020).
 #'\code The primary difference is the use of a rectangular local neighborhood shape instead
@@ -13,12 +13,14 @@
 #'@param type Numeric. Each number represents a specific landform, for example: (1) Flat-bottomed Valleys, (2) Open Valleys, and (3) Incised Valleys
 #'
 #'@examples
+#'\dontrun{
 #' library(terra)
 #' library(slope)
 #' dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 #' dem_fill <- slope::fill(dem, system.file("ex/fill.tif'))
 #' v <- slope::valleys(dem, 7, 3)
 #' plot(v)
+#' }
 #'@export
 valleys <- function(x, sp_range, c){
   x <- terra::rast(terra::sources(x))

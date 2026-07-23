@@ -2,7 +2,7 @@
 % Please edit documentation in R/rci.R
 \name{rci}
 \alias{rci}
-\title{\strong Roughness Concentration Index}
+\title{Roughness Concentration Index}
 \usage{
 rci(x, sp_range, crs, aoi, unit)
 }
@@ -18,13 +18,18 @@ rci(x, sp_range, crs, aoi, unit)
 \item{unit}{Metrics units in square kilometers.}
 }
 \description{
+\strong{Roughness Concentration Index}
+}
+\details{
 Calculates the Roughness Concentration Index (RCI) based on the methodology of Sampaio and Augustin (2014).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 aoi <- terra:vect(system.file("ex/aoi.shp", package = "terra"))
 dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 r <- slope::rci(dem, 300, 'EPSG:5880', aoi, 1000000)
 plot(r)
+}
 }

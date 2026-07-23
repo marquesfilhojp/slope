@@ -2,7 +2,7 @@
 % Please edit documentation in R/flow_accumulation.R
 \name{flow_accumulation}
 \alias{flow_accumulation}
-\title{\strong Flow Accumulation}
+\title{Flow Accumulation}
 \usage{
 flow_accumulation(x, type)
 }
@@ -12,12 +12,17 @@ flow_accumulation(x, type)
 \item{type}{Float. 'cells', 'sca' and 'ca'.}
 }
 \description{
+\strong{Flow Accumulation}
+}
+\details{
 Performs the flow accumulation in DEMs based on the wbt_flow_accumulation_full_workflow() function (Lindsay, 2016) for calculates sediment connectivity (Cavalli et al. 2013).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 fa <- slope::flow_accumulation(dem, 'sca')
 plot(fa)
+}
 }

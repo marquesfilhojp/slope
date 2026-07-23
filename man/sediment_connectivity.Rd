@@ -16,12 +16,13 @@ sediment_connectivity(x, sp_range, fa, fp)
 \item{fp}{Input Flow Path raster file.}
 }
 \description{
-\strong Sediment Connectivity
+\strong{Sediment Connectivity}
 }
 \details{
 Calculates sediment connectivity, based in Cavalli et al. (2013)
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
@@ -29,4 +30,5 @@ fa <- terra:rast(system.file("ex/accum.tif", package = "terra"))
 fp <- terra:rast(system.file("ex/flow_path.tif", package = "terra"))
 ic <- slope::sediment_connectivity(dem, 7, fa, fp)
 plot(ic)
+}
 }

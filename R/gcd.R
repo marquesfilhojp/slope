@@ -1,6 +1,6 @@
-# 'geomorphic change detection
+#' Geomorphic Change Detection
 #'
-#'\strong DEMs of Difference
+#'\strong{DEMs of Difference}
 #'
 #'Detects geomorphic change detection based in Wheathon et al. (2010).
 #'
@@ -10,11 +10,13 @@
 #'@param type Numeric. Choice between deposition [0] or erosion [1].
 #'
 #'@examples
+#'\dontrun{
 #' library(terra)
 #' z2 <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 #' z1 <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 #' gcd <- slope::geomorphic_change_detection(z_actual, z_dem, 'EPSG:5880', 1)
 #' plot(gcd)
+#' }
 #'@export
 #'
 geomorphic_change_detection <- function(z_actual, z_dem, crs, type){

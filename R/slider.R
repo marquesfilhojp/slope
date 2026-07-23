@@ -1,6 +1,6 @@
-# 'slider
+#' Slider
 #'
-#'\strong Debris Flow Prediction
+#'\strong{Debris Flow Prediction}
 #'
 #'Detects debris flow based on the identification of hollows and critical slope thresholds.
 #'
@@ -12,11 +12,13 @@
 #'@param c Concave-concave slope (hollows), referring to code 11, see details in slopeforms.
 #'
 #'@examples
+#'\dontrun{
 #' library(terra)
 #' library(slope)
 #' dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 #' sd <- slope::slider(dem, 7, 'EPSG:5880', 21, 25, 11)
 #' plot(sd)
+#' }
 #'@export
 slider <- function(x, sp_range, crs, less_int_slope, more_int_slope, c){
   xx <- terra::rast(terra::sources(x))|>

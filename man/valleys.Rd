@@ -2,7 +2,7 @@
 % Please edit documentation in R/valleys.R
 \name{valleys}
 \alias{valleys}
-\title{\strong Valleys (Black Top Hat)}
+\title{Valleys}
 \usage{
 valleys(x, sp_range, c)
 }
@@ -14,6 +14,9 @@ valleys(x, sp_range, c)
 \item{type}{Numeric. Each number represents a specific landform, for example: (1) Flat-bottomed Valleys, (2) Open Valleys, and (3) Incised Valleys}
 }
 \description{
+\strong{Valleys (Black Top Hat)}
+}
+\details{
 Detects different types of valleys, based on Silveira and Silveira (2020).
 \code The primary difference is the use of a rectangular local neighborhood shape instead
 \code of a circular one, in calculus of Black Top Hat (BTW) (Rodriguez et al. 2002).

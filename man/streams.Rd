@@ -2,7 +2,7 @@
 % Please edit documentation in R/streams.R
 \name{streams}
 \alias{streams}
-\title{\strong Streams}
+\title{Streams}
 \usage{
 streams(x, threshold)
 }
@@ -12,12 +12,17 @@ streams(x, threshold)
 \item{threshold}{Numeric. For extraction of streams.}
 }
 \description{
+\strong{Streams}
+}
+\details{
 Performs identification of streams in DEMs based on the wbt_extract_streams() function (Lindsay, 2016) for calculates sediment connectivity (Cavalli et al. 2013).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 fa <- terra::rast(system.file("ex/accum.tif", package = "terra"))
 s <- slope::streams(fa, 500)
 plot(s)
+}
 }

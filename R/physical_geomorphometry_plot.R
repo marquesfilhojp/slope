@@ -1,17 +1,19 @@
-# 'physical_geomorphometry_plot
+#' Physical Geomorphometry Plot
 #'
-#'\strong Physical Geomorphometry in Graphic
+#'\strong{Physical Geomorphometry in Graphic}
 #'
 #'Calculates the percentages of slope forms for graphical visualization.
 #'
 #'@param x Input slopeforms raster result.
 #'
 #'@examples
+#'\dontrun{
 #' library(terra)
 #' library(slope)
 #' sf <- terra::rast('ex/slopeforms.tif', package = "terra")
 #' pgv <- slope::physical_geomorphometry_plot(sf)
 #' plot(pgv)
+#' }
 #'@export
 physical_geomorphometry_plot <- function(x){
   x <- terra::rast(terra::sources(x))|>

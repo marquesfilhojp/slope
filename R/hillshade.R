@@ -1,4 +1,4 @@
-# 'hillshade
+#' Hillshade
 #'
 #'\strong Hillshade for slope patterns visualization
 #'
@@ -10,11 +10,13 @@
 #'@param direction Numeric. Illumination direction (azimuth) in degrees.
 #'
 #'@examples
+#'\dontrun{
 #' library(terra)
 #' library(slope)
 #' dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 #' shade <- slope::hillshade(dem, 3, 45, 315)
 #' plot(shade)
+#' }
 #'@export
 hillshade <- function(x, w, angle, direction){
   slope <- terra::terrain(x, v = "slope", neighbors = 8, unit = "radians")

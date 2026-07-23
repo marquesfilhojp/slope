@@ -2,7 +2,7 @@
 % Please edit documentation in R/flow_path.R
 \name{flow_path}
 \alias{flow_path}
-\title{\strong Flow Path}
+\title{Flow Path}
 \usage{
 flow_path(x, y)
 }
@@ -12,13 +12,18 @@ flow_path(x, y)
 \item{y}{Input Streams raster file.}
 }
 \description{
-Performs the flow path in DEMs based on the wbt_flow_accumulation_full_workflow() function (Lindsay, 2016) for calculates sediment connectivity (Cavalli et al. 2013).
+\strong{Flow Path}
+}
+\details{
+Performs the flow path in DEMs based on the wbt_downslope_distance_to_stream() function (Lindsay, 2016) for calculates sediment connectivity (Cavalli et al. 2013).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 s <- terra::rast(system.file("ex/streams.tif", package = "terra"))
 fp <- slope::flow_path(dem, s)
 plot(fp)
+}
 }

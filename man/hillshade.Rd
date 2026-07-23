@@ -2,7 +2,7 @@
 % Please edit documentation in R/hillshade.R
 \name{hillshade}
 \alias{hillshade}
-\title{\strong Hillshade for slope patterns visualization}
+\title{Hillshade}
 \usage{
 hillshade(x, w, angle, direction)
 }
@@ -16,12 +16,17 @@ hillshade(x, w, angle, direction)
 \item{direction}{Numeric. Illumination direction (azimuth) in degrees.}
 }
 \description{
+\strong Hillshade for slope patterns visualization
+}
+\details{
 Calculates the area and percentages of slope forms for tabular visualization.
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 shade <- slope::hillshade(dem, 3, 45, 315)
 plot(shade)
+}
 }

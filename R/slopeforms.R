@@ -1,6 +1,6 @@
-# 'slopeforms
+#' Slope Forms
 #'
-#'\strong Slope Forms Patterns
+#'\strong{Slope Forms Patterns}
 #'
 #'Detects the nine landform elements based on Dikau (1989).
 #'\code Each code refers to a specific pattern of slope forms.
@@ -23,11 +23,13 @@
 #'@param crs Input geodesic reference systems.
 #'
 #'@examples
+#'\dontrun{
 #' library(terra)
 #' library(slope)
 #' dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 #' sf <- slope::slopeforms(dem, 7, 'EPSG:5880')
 #' plot(sf)
+#' }
 #'@export
 slopeforms <- function(x, sp_range, crs){
   xx <- terra::rast(terra::sources(x))|>

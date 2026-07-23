@@ -2,7 +2,7 @@
 % Please edit documentation in R/slider.R
 \name{slider}
 \alias{slider}
-\title{\strong Debris Flow Prediction}
+\title{Slider}
 \usage{
 slider(x, sp_range, crs, less_int_slope, more_int_slope, c)
 }
@@ -20,12 +20,17 @@ slider(x, sp_range, crs, less_int_slope, more_int_slope, c)
 \item{c}{Concave-concave slope (hollows), referring to code 11, see details in slopeforms.}
 }
 \description{
+\strong{Debris Flow Prediction}
+}
+\details{
 Detects debris flow based on the identification of hollows and critical slope thresholds.
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 sd <- slope::slider(dem, 7, 'EPSG:5880', 21, 25, 11)
 plot(sd)
+}
 }

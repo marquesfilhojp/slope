@@ -2,7 +2,7 @@
 % Please edit documentation in R/surface_relief_ratio.R
 \name{surface_relief_ratio}
 \alias{surface_relief_ratio}
-\title{\strong Surface Relief Ratio}
+\title{Surface Relief Ratio}
 \usage{
 surface_relief_ratio(x, sp_range)
 }
@@ -12,12 +12,17 @@ surface_relief_ratio(x, sp_range)
 \item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
 }
 \description{
+\strong{Surface Relief Ratio}
+}
+\details{
 Calculates Surface Relief Ratio, based Berry (2002).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 srr <- slope::surface_relief_ratio(dem, 7)
 plot(srr)
+}
 }

@@ -1,6 +1,6 @@
-# 'Streams
+#' Streams
 #'
-#'\strong Streams
+#'\strong{Streams}
 #'
 #'Performs identification of streams in DEMs based on the wbt_extract_streams() function (Lindsay, 2016) for calculates sediment connectivity (Cavalli et al. 2013).
 #'
@@ -8,11 +8,13 @@
 #'@param threshold Numeric. For extraction of streams.
 #'
 #'@examples
+#'\dontrun{
 #' library(terra)
 #' library(slope)
 #' fa <- terra::rast(system.file("ex/accum.tif", package = "terra"))
 #' s <- slope::streams(fa, 500)
 #' plot(s)
+#' }
 #'@export
 streams <- function(x, threshold){
   whitebox::install_whitebox()
