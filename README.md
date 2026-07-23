@@ -20,13 +20,7 @@ Marques Filho, J. da P. (2026). marquesfilhojp/slope: *slope*: Identify slope pa
 ## Dependencies 
 
 The following dependencies are required for the proper performance of the R package `slope`. 
-* **classInt**: 
-* **ggplot2**:
-* **MultiscaleDTM**:
-* **sf**:
-* **spatstat**:
-* **terra**:
-* **whitebox**:
+* **classInt**, **ggplot2**, **MultiscaleDTM**, **sf**, **spatstat**, **terra** and **whitebox**:
 
 ## ⚙️ Installation by Operating System
 Currently, the R package *slope* v.0.4.5 has been developed solely for *Windows* operating systems and *Linux* distributions such as Debian, Ubuntu, and Linux—specifically **version 22.04 LTS Jammy. Jellyfish**.
