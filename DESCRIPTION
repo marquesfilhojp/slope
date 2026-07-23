@@ -2,7 +2,7 @@ Package: slope
 Type: Package
 Title: An R Package for Identify slope patterns and process
 Version: 0.4.5
-Authors@R: person("Jorge Paixão", "Marques Filho", 
+Authors@R: person("Jorge da Paixão", "Marques Filho", 
                   email = "marquesfilho.j.p@gmail.com", 
                   role = c("aut", "cre"))
 Description: The slope package provides different geomorphometric approaches for detecting patterns of slope landforms and debris flows.
