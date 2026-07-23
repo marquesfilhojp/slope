@@ -1,4 +1,8 @@
 url: https://marquesfilhojp.github.io/slope/
+
 template:
   bootstrap: 5
 
+home:
+  title: "slope: An R Package for Identify Slope Patterns and Processes"
+  description: "The slope package provides different geomorphometric approaches for detecting patterns of slope landforms and debris flows."
