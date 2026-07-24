@@ -1,4 +1,4 @@
-<img src = "man/figures/slope.png" align = "right" width = "150" style = "margin: 0 0 10px 10px;" />
+<img src = "man/figures/logo.png" align = "right" width = "150" style = "margin: 0 0 10px 10px;" />
 
 ## *slope*: An R Package Identify Slope Patterns and Processes
 <div align = "justify">
