@@ -52,6 +52,7 @@ sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
 sudo apt-get update
 sudo apt-get install libgdal-dev libgeos-dev libproj-dev libtbb-dev libnetcdf-dev
 ```
-
-
+<div align = "justify">
+This package was developed in partnership with the Environmental Geomorphology and Soil Degradation Laboratory (**LAGESOLOS**) and the Remote Sensing and Environmental Studies Space Laboratory (**ESPAÇO**) at the Federal University of Rio de Janeiro. 
+</div>
 
