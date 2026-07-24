@@ -21,7 +21,7 @@ Marques Filho, J. da P. (2026). marquesfilhojp/slope: *slope*: Identify slope pa
 ## Dependencies 
 
 <div align = "justify">
-* The following dependencies are required for the proper performance of the R package `slope`: **classInt**, **ggplot2**, **MultiscaleDTM**, **sf**, **spatstat**, **terra** and **whitebox**. 
+The following dependencies are required for the proper performance of the R package `slope`: **classInt**, **ggplot2**, **MultiscaleDTM**, **sf**, **spatstat**, **terra** and **whitebox**. 
 </div>
 
 ## ⚙️ Installation by Operating System
