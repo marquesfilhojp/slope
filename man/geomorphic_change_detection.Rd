@@ -16,17 +16,12 @@ geomorphic_change_detection(z_actual, z_dem, crs, type)
 \item{type}{Numeric. Choice between deposition [0] or erosion [1].}
 }
 \description{
-\strong{DEMs of Difference}
-}
-\details{
-Detects geomorphic change detection based in Wheathon et al. (2010).
+Detects geomorphic change detection (DEMs of Difference) based in Wheathon et al. (2010).
 }
 \examples{
-\dontrun{
 library(terra)
 z2 <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 z1 <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 gcd <- slope::geomorphic_change_detection(z_actual, z_dem, 'EPSG:5880', 1)
 plot(gcd)
-}
 }

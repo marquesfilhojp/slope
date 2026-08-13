@@ -1,26 +1,22 @@
-#' Valleys
+#'Valleys
 #'
-#'\strong{Valleys (Black Top Hat)}
-#'
-#'Detects different types of valleys, based on Silveira and Silveira (2020).
-#'\code The primary difference is the use of a rectangular local neighborhood shape instead
-#'\code of a circular one, in calculus of Black Top Hat (BTW) (Rodriguez et al. 2002).
-#'\code For more satisfactory results, it is recommended to define the
-#'\code moving window based on the minimum mappable area and function fill().
+#' Detects different types of valleys, based on Silveira and Silveira (2020).
+#' The primary difference is the use of a rectangular local neighborhood shape instead
+#' of a circular one, in calculus of Black Top Hat (BTW) (Rodriguez et al. 2002).
+#' For more satisfactory results, it is recommended to define the
+#' moving window based on the minimum mappable area and function fill()
 #'
 #'@param x Input DEM raster file.
 #'@param sp_range Numeric. Number of neighbor cells for multiscalar analysis.
 #'@param type Numeric. Each number represents a specific landform, for example: (1) Flat-bottomed Valleys, (2) Open Valleys, and (3) Incised Valleys
 #'
 #'@examples
-#'\dontrun{
 #' library(terra)
 #' library(slope)
 #' dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 #' dem_fill <- slope::fill(dem, system.file("ex/fill.tif'))
 #' v <- slope::valleys(dem, 7, 3)
 #' plot(v)
-#' }
 #'@export
 valleys <- function(x, sp_range, c){
   x <- terra::rast(terra::sources(x))

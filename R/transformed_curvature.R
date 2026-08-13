@@ -1,6 +1,4 @@
-#' Transformation (Normalization) Curvature
-#'
-#'\strong{Transformation (Normalization) Curvature}
+#'Transformation (Normalization) Curvature
 #'
 #'Curvature normalization, based in Evans (1972) and Csillik et al. (2015)
 #'
@@ -11,13 +9,11 @@
 #'@param type Numeric. Choice between Profile Curvature [0] or Plan Curvature [1].
 #'
 #'@examples
-#'\dontrun{
 #' library(terra)
 #' library(slope)
 #' dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 #' tc <- slope::transformed_curvature(dem, 7, 0.1, 'EPSG:5880', 1)
 #' plot(tc)
-#' }
 #'@export
 transformed_curvature <- function(x, sp_range, k, crs, type){
   if(type == 0){

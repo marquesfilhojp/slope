@@ -4,10 +4,12 @@
 \alias{sediment_connectivity}
 \title{Sediment Connectivity}
 \usage{
-sediment_connectivity(x, sp_range, fa, fp)
+sediment_connectivity(x, w, sp_range, fa, fp)
 }
 \arguments{
 \item{x}{Input DEM raster file.}
+
+\item{w}{C Factor reclassified based in Revised Equation Soil Loss Equation.}
 
 \item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
 
@@ -19,16 +21,15 @@ sediment_connectivity(x, sp_range, fa, fp)
 \strong{Sediment Connectivity}
 }
 \details{
-Calculates sediment connectivity, based in Cavalli et al. (2013)
+Calculates sediment connectivity, based in Borelli et al. (2008).
 }
 \examples{
-\dontrun{
 library(terra)
 library(slope)
 dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
+w <- terra::rast(system.file("ex/lulc.tif", package = "terra"))
 fa <- terra:rast(system.file("ex/accum.tif", package = "terra"))
 fp <- terra:rast(system.file("ex/flow_path.tif", package = "terra"))
-ic <- slope::sediment_connectivity(dem, 7, fa, fp)
+ic <- slope::sediment_connectivity(dem, 5, fa, fp)
 plot(ic)
-}
 }

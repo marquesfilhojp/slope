@@ -1,21 +1,17 @@
-#' Fill
-#'
-#'\strong{Spurious Depressions Filling}
+#'Fill
 #'
 #'Performs the filling of spurious depressions in DEMs based on the wbt_fill_depressions() function (Lindsay, 2016).
 #'
 #'@param x Input DEM raster file.
 #'@param y Output filled raster file.
-#'
 #'@examples
 #'\dontrun{
-#' library(terra)
-#' library(slope)
-#' dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
-#' dem_fill <- slope::fill(dem, system.file("ex/fill.tif'))
-#' plot(dem_fill$fill)
-#' }
-#'@export
+#'library(terra)
+#'library(slope)
+#'dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
+#'dem_fill <- slope::fill(dem, system.file("ex/fill.tif'))
+#'plot(dem_fill$fill)
+#'}
 #'
 fill <- function(x, y){
   whitebox::install_whitebox()

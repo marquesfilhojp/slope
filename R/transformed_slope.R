@@ -1,6 +1,4 @@
-#' Transformation (Normalization) Slope
-#'
-#'\strong{Transformation (Normalization) Slope}
+#'Transformation (Normalization) Slope
 #'
 #'Slope normalization, based in Csillik et al. (2015)
 #'
@@ -11,13 +9,11 @@
 #'@param type Numeric. Choice between normalization based in Evans (1977) (2015) [0] or Csillik et al. (2015) [1].
 #'
 #'@examples
-#'\dontrun{
 #' library(terra)
 #' library(slope)
 #' dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 #' tc <- slope::transformed_slope(dem, 7, 0.1, 'EPSG:5880', 1)
 #' plot(tc)
-#' }
 #'@export
 transformed_slope <- function(x, sp_range, lambda, crs, type){
   if(type == 0){

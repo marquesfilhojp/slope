@@ -12,17 +12,12 @@ normalization(x, sp_range)
 \item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
 }
 \description{
-\strong{Normalization}
-}
-\details{
 Performs normalization of Land Surface Parameters (LSPs), based Huang et al. (2021)
 }
 \examples{
-\dontrun{
 library(terra)
 library(slope)
 dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 ni <- slope::normalization(dem, 7)
 plot(ni)
-}
 }

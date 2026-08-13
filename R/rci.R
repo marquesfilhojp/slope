@@ -1,6 +1,4 @@
-#' Roughness Concentration Index
-#'
-#'\strong{Roughness Concentration Index}
+#'Roughness Concentration Index
 #'
 #'Calculates the Roughness Concentration Index (RCI) based on the methodology of Sampaio and Augustin (2014).
 #'
@@ -11,14 +9,12 @@
 #'@param unit Metrics units in square kilometers.
 #'
 #'@examples
-#'\dontrun{
 #' library(terra)
 #' library(slope)
 #' aoi <- terra:vect(system.file("ex/aoi.shp", package = "terra"))
 #' dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 #' r <- slope::rci(dem, 300, 'EPSG:5880', aoi, 1000000)
 #' plot(r)
-#' }
 #'@export
 rci <- function(x, sp_range, crs, aoi, unit){
   x <- terra::rast(terra::sources (x))|>

@@ -1,0 +1,18 @@
+---
+title: "Open Topography Global Datasets"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Open Topography Global Datasets}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+library(pacman)
+p_load(sf, slope, terra)
+aoi <- sf::read_sf("dem/aoi.shp")
+api_key <- 'b1698eb31759cfb304e80f31650e1a99'
+dem <- tempfile(fileext = ".tif")
+data <- slope::elevr('GEDTM30', aoi, 'EPSG:4326', api_key, dem)
+plot(data)
+```

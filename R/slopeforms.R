@@ -1,12 +1,9 @@
-#' Slope Forms
+#'Slope Forms
 #'
-#'\strong{Slope Forms Patterns}
-#'
-#'Detects the nine landform elements based on Dikau (1989).
-#'\code Each code refers to a specific pattern of slope forms.
+#' Detects the nine landform elements based on Dikau (1989).
 #'
 #'@details Each code refers to a specific pattern of slope forms:
-#' \itemize{
+#'\itemize{
 #'   \item \code{11}: Concave-Concave slope (hollows).
 #'   \item \code{12}: Concave-Concave slope.
 #'   \item \code{13}: Concave-Convex slope.
@@ -16,20 +13,18 @@
 #'   \item \code{31}: Concave-Convex slope.
 #'   \item \code{32}: Straight-Convex slope.
 #'   \item \code{33}: Convex-Convex slope.
-#' }
+#'}
 #'
 #'@param x Input DEM raster file.
 #'@param sp_range Numeric. Number of neighbor cells for multiscalar analysis.
 #'@param crs Input geodesic reference systems.
 #'
 #'@examples
-#'\dontrun{
 #' library(terra)
 #' library(slope)
 #' dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 #' sf <- slope::slopeforms(dem, 7, 'EPSG:5880')
-#' plot(sf)
-#' }
+#'
 #'@export
 slopeforms <- function(x, sp_range, crs){
   xx <- terra::rast(terra::sources(x))|>

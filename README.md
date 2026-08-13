@@ -2,17 +2,9 @@
 
 ## *slope*: An R Package Identify Slope Patterns and Processes
 <div align = "justify">
-*slope* is R experimental package who provides different geomorphometric approaches, for example: **Nine type basics of slope forms** (Dikau, 1989), **Transformed Curvature** (Evans, 1984), **Transformed Slope** (Csillik *et al*. 2015), **Dissection Index** (Evans, 1977), **Surface Relief Ratio** (Berry, 2002), **Roughness Concentration Index** (Sampaio and Augustin, 2014), **Ridges, Tops and Valleys** (Silveira and Silveira, 2020), **Geomorphic Change Detection** (Wheaton *et al*. 2010), **Sediment Connectivity** (Cavalli *et al*. 2013), **slider** module, exclusive to the slope R package (marquesfilho, 2026) and shorthly **Topographic Position Index** (Weiss, 2001; Silveira and Silveira, 2017), **Sediment Transport Index** (Moore and Burch, 1986); **Revised Universal Soil Loss Equation** (Renard *et al*. 1997) and **Thematic Susceptibility Mapping** for Landslide and Gully Erosion based Machine Learning Models (Filho *et al*. 2024). 
+*slope* is an experimental R package providing distinct geomorphometric approaches, commonly unavailable in traditional GIS environments, focused on the reproducibility and replicability of geomorphometric analyses. 
+Additionally, the scope of this project implements classical geomorphometric methods fundamental to the scientific community.
 </div>
-
-#### For instalation:
-```R
-install.packages('remotes')
-library(remotes)
-remotes::install_github("marquesfilhojp/slope")
-library(slope)
-
-```
 
 For citation:
 
@@ -21,13 +13,13 @@ Marques Filho, J. da P. (2026). marquesfilhojp/slope: *slope*: Identify slope pa
 ## Dependencies 
 
 <div align = "justify">
-The following dependencies are required for the proper performance of the R package `slope`: **classInt**, **ggplot2**, **MultiscaleDTM**, **sf**, **spatstat**, **terra** and **whitebox**. 
+The following dependencies are required for the proper performance of the R package `slope`: **caret**, **classInt**, **ggplot2**, **httr2**, **MultiscaleDTM**, **sf**, **spatstat**, **terra** and **whitebox**. 
 </div>
 
 ## ⚙️ Installation by Operating System
 
 <div align="justify">
-Currently, the R package *slope* v.0.4.5 has been developed solely for *Windows* operating systems and *Linux* distributions such as Debian, Ubuntu, and Linux—specifically **version 22.04 LTS Jammy Jellyfish**.
+Currently, the R package *slope* v.0.5.0 has been developed solely for *Windows* operating systems and *Linux* distributions such as Debian, Ubuntu, and Linux—specifically **version 22.04 LTS Jammy Jellyfish**.
 </div>
 
 ### 🪟 Windows

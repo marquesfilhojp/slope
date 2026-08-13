@@ -12,17 +12,12 @@ dissection_index(x, sp_range)
 \item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
 }
 \description{
-\strong{Dissection Index}
-}
-\details{
 Detects spatial patterns of dissection, based in Evans (1972).
 }
 \examples{
-\dontrun{
 library(terra)
 library(slope)
 dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 di <- slope::dissection_index(dem, 7)
 plot(di)
-}
 }

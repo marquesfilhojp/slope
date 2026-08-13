@@ -18,17 +18,12 @@ transformed_slope(x, sp_range, lambda, crs, type)
 \item{type}{Numeric. Choice between normalization based in Evans (1977) (2015) [0] or Csillik et al. (2015) [1].}
 }
 \description{
-\strong{Transformation (Normalization) Slope}
-}
-\details{
 Slope normalization, based in Csillik et al. (2015)
 }
 \examples{
-\dontrun{
 library(terra)
 library(slope)
 dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 tc <- slope::transformed_slope(dem, 7, 0.1, 'EPSG:5880', 1)
 plot(tc)
-}
 }

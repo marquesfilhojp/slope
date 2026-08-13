@@ -14,12 +14,9 @@ slopeforms(x, sp_range, crs)
 \item{crs}{Input geodesic reference systems.}
 }
 \description{
-\strong{Slope Forms Patterns}
+Detects the nine landform elements based on Dikau (1989).
 }
 \details{
-Detects the nine landform elements based on Dikau (1989).
-\code Each code refers to a specific pattern of slope forms.
-
 Each code refers to a specific pattern of slope forms:
 \itemize{
   \item \code{11}: Concave-Concave slope (hollows).
@@ -34,11 +31,9 @@ Each code refers to a specific pattern of slope forms:
 }
 }
 \examples{
-\dontrun{
 library(terra)
 library(slope)
 dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 sf <- slope::slopeforms(dem, 7, 'EPSG:5880')
-plot(sf)
-}
+
 }
