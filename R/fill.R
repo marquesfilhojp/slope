@@ -12,8 +12,13 @@
 #'dem_fill <- slope::fill(dem, system.file("ex/fill.tif'))
 #'plot(dem_fill$fill)
 #'}
-#'
+#'@export
 fill <- function(x, y){
+  if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){
+    stop("Argument 'x' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
+  } else if(missing(y) || is.null(y) || !is.character(api_key)){
+    stop("Argument 'output_file' must be provided and be a character string.", call. = FALSE)
+  } else{
   whitebox::install_whitebox()
   whitebox::wbt_fill_depressions(dem = terra::sources(x),
                        output = y,
@@ -21,4 +26,5 @@ fill <- function(x, y){
                        flat_increment = NULL,
                        max_depth = NULL)
   return(terra::rast(y))
+  }
 }

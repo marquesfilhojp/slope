@@ -3,20 +3,28 @@
 #'Detects spatial patterns of dissection, based in Evans (1972).
 #'
 #'@param x Input DEM raster file.
-#'@param sp_range Numeric. Number of neighbor cells for multiscalar analysis.
-#'
+#'@param sp_range Number of neighbor cells for multiscalar analysis.
+
 #'@examples
-#' library(terra)
-#' library(slope)
-#' dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
-#' di <- slope::dissection_index(dem, 7)
-#' plot(di)
+#'\dontrun{
+#'library(terra)
+#'library(slope)
+#'dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
+#'di <- slope::dissection_index(dem, 7)
+#'plot(di)
+#'}
 #'@export
 dissection_index <- function(x, sp_range){
+  if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){
+    stop("Argument 'x' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
+  } else if(missing(sp_range) || is.null(sp_range) || !is.numeric(sp_range)){
+    stop("Argument 'sp_range' must be provided and be a numeric value.", call. = FALSE)
+  } else{
   max <- x|>
     terra::focal(sp_range, 'max')
   min <- x|>
     terra::focal(sp_range, 'min')
   di <- (x - min)/(max - min)
-  return(di)
+  names(di) <- "dissection_index"; return(di)
+  }
 }

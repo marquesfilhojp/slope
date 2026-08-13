@@ -7,17 +7,26 @@
 #'moving window based on the minimum mappable area.
 #'
 #'@param x Input DEM raster file.
-#'@param sp_range Numeric. Number of neighbor cells for multiscalar analysis.
-#'@param type Numeric. Each number represents a specific landform, for example: (1) Convex Hilltops and Interfluves, (2) Sharp Crests, and (3) Ridges
+#'@param sp_range Number of neighbor cells for multiscalar analysis.
+#'@param type Each number represents a specific landform, for example: (1) Convex Hilltops and Interfluves, (2) Sharp Crests, and (3) Ridges
 #'
 #'@examples
-#' library(terra)
-#' library(slope)
-#' dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
-#' r <- slope::ridges_tops(dem, 7, 1)
-#' plot(r)
+#'\dontrun{
+#'library(terra)
+#'library(slope)
+#'dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
+#'r <- slope::ridges_tops(dem, 7, 1)
+#'plot(r)
+#'}
 #'@export
 ridges_tops <- function(x, sp_range, type){
+  if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){
+    stop("Argument 'x' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
+  } else if(missing(sp_range) || is.null(sp_range) || !is.numeric(sp_range)){
+    stop("Argument 'sp_range' must be provided and be a numeric value.", call. = FALSE)
+  } else if(missing(type) || is.null(type) || !is.numeric(type)){
+    stop("Argument 'type' must be provided and be a numeric value (1, 2, or 3).", call. = FALSE)
+  } else{
   x <- terra::rast(terra::sources(x))
   maxmin <-  terra::focal(x, sp_range, 'min')|>
     terra::focal(sp_range, 'max')
@@ -36,4 +45,5 @@ ridges_tops <- function(x, sp_range, type){
     print('Parameter condition is null or different of the pattern')
   }
   return(r)
+  }
 }

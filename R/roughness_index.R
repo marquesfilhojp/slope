@@ -3,16 +3,23 @@
 #'Calculates Roughness Index, based in Trevisani and Cavalli (2016).
 #'
 #'@param x Input DEM raster file.
-#'@param sp_range Numeric. Number of neighbor cells for multiscalar analysis.
+#'@param sp_range Number of neighbor cells for multiscalar analysis.
 #'
 #'@examples
-#' library(terra)
-#' library(slope)
-#' dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
-#' ri <- slope::roughness_index(dem, 5)
-#' plot(ri)
+#'\dontrun{
+#'library(terra)
+#'library(slope)
+#'dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
+#'ri <- slope::roughness_index(dem, 5)
+#'plot(ri)
+#'}
 #'@export
 roughness_index <- function(x, sp_range){
+  if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){
+    stop("Argument 'x' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
+  } else if(missing(sp_range) || is.null(sp_range) || !is.numeric(sp_range)){
+    stop("Argument 'sp_range' must be provided and be a numeric value.", call. = FALSE)
+  } else{
   smoothed_dem <- terra::focal(x, w = sp_range, 'mean')
   residual_dem <- x - smoothed_dem
   r <- terra::focal(residual_dem, sp_range, 'sd')|>
@@ -29,4 +36,5 @@ roughness_index <- function(x, sp_range){
   w <- 1 - (r1 / r2)
   w <- terra::clamp(w, lower = 0.001, upper = 1.0)
   return(w)
+  }
 }

@@ -1,3 +1,11 @@
+# slope 0.5.3
+
+* Fix implementation bugs in hillshade.
+
+# slope 0.5.2
+
+* Fix implementation bugs in elevr. 
+
 # slope 0.5.1
 
 * Add `elevr()` function to fetch and process global DEMs from OpenTopography.

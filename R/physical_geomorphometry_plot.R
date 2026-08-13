@@ -5,13 +5,18 @@
 #'@param x Input slopeforms raster result.
 #'
 #'@examples
-#' library(terra)
-#' library(slope)
-#' sf <- terra::rast('ex/slopeforms.tif', package = "terra")
-#' pgv <- slope::physical_geomorphometry_plot(sf)
-#' plot(pgv)
+#'\dontrun{
+#'library(terra)
+#'library(slope)
+#'sf <- terra::rast('ex/slopeforms.tif', package = "terra")
+#'pgv <- slope::physical_geomorphometry_plot(sf)
+#'plot(pgv)
+#'}
 #'@export
 physical_geomorphometry_plot <- function(x){
+  if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){
+    stop("Argument 'x' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
+  } else{
   x <- terra::rast(terra::sources(x))|>
     terra::as.polygons()|>
     sf::st_as_sf()|>
@@ -48,4 +53,5 @@ physical_geomorphometry_plot <- function(x){
            ggplot2::theme_classic()+
            ggplot2::xlab("Percent %") +
            ggplot2::ylab("Slope Forms"))
+  }
 }

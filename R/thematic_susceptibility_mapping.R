@@ -29,56 +29,75 @@
 #' plot(tsm)
 #'
 thematic_susceptibility_mapping <- function(x, y, target_col, p, drop_cols, k_folds, method, mtry, ntree, cost, preProcess, n_class, predict, path_metrics, path_var_imp, path_prediction){
-  dataset <- x|>
-    terra::extract(y, bind = T)|>
-    sf::st_as_sf()|>
-    as.data.frame()
-  dataset[[target_col]] <- as.factor(dataset[[target_col]])
-  data_partition <- createDataPartition(dataset[, target_col], p = p, list = F)
-  train <- dataset[data_partition, drop_cols]
-  colSums(is.na(train))
-  train <- na.omit(train)
-  length(train[[target_col]])
-  test <- dataset[-data_partition, drop_cols]
-  colSums(is.na(test))
-  test <- na.omit(test)
-  length(test[[target_col]])
-  cv_folds <- createFolds(train[[target_col]], k = k_folds, returnTrain = T, list = T)
-  trControl <- trainControl(method = 'cv', number = k_folds, p = p, search = 'grid', index = cv_folds,  allowParallel = T)
-  form <- as.formula(paste(target_col, "~ ."))
-  if(method == 'rf'){
-    tuneGrid = expand.grid(mtry = seq(1, mtry, by = 1))
-    model <- train(form, data = train, method = 'rf', ntree = ntree, metric = 'Accuracy',
-                   trControl = trControl, tuneGrid = tuneGrid, preProcess = preProcess)
-  } else if (method == 'svm'){
-    tuneGrid <- expand.grid(C = seq(0.1, cost, by = 0.2))
-    model <- train(form, data = train, method = 'svmLinear',
-                   trControl = trControl, tuneGrid = tuneGrid, preProcess = preProcess, prob.model = T)
+  if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){
+    stop("Argument 'x' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
+  } else if(missing(y) || is.null(y) || (!inherits(y, "sf") && !inherits(y, "SpatVector"))){
+    stop("Argument 'y' must be provided and inherit from class 'sf' or 'SpatVector'.", call. = FALSE)
+  } else if(missing(target_col) || is.null(target_col)){
+    stop("Argument 'target_col' must be provided.", call. = FALSE)
+  } else if(missing(p) || is.null(p) || !is.numeric(p)){
+    stop("Argument 'p' must be provided and be a numeric value.", call. = FALSE)
+  } else if(missing(k_folds) || is.null(k_folds) || !is.numeric(k_folds)){
+    stop("Argument 'k_folds' must be provided and be a numeric integer.", call. = FALSE)
+  } else if(missing(method) || is.null(method) || !is.character(method)){
+    stop("Argument 'method' must be provided and be a character string ('rf' or 'svm').", call. = FALSE)
   } else{
-    print("method must be 'rf' or 'svm'")
+    dataset <- x|>
+      terra::extract(y, bind = TRUE)|>
+      sf::st_as_sf()|>
+      sf::st_drop_geometry()|>
+      as.data.frame()
+
+    dataset[[target_col]] <- as.factor(dataset[[target_col]])
+
+    data_partition <- caret::createDataPartition(dataset[[target_col]], p = p, list = FALSE)
+
+    train <- dataset[data_partition, drop_cols]
+    train <- na.omit(train)
+
+    test <- dataset[-data_partition, drop_cols]
+    test <- na.omit(test)
+
+    cv_folds <- caret::createFolds(train[[target_col]], k = k_folds, returnTrain = TRUE, list = TRUE)
+    trControl <- caret::trainControl(method = 'cv', number = k_folds, p = p, search = 'grid', index = cv_folds, allowParallel = TRUE)
+
+    form <- as.formula(paste(target_col, "~ ."))
+
+    if(method == 'rf'){
+      tuneGrid <- expand.grid(mtry = seq(1, mtry, by = 1))
+      model <- caret::train(form, data = train, method = 'rf', ntree = ntree, metric = 'Accuracy',
+                            trControl = trControl, tuneGrid = tuneGrid, preProcess = preProcess)
+    } else if(method == 'svm'){
+      tuneGrid <- expand.grid(C = seq(0.1, cost, by = 0.2))
+      model <- caret::train(form, data = train, method = 'svmLinear',
+                            trControl = trControl, tuneGrid = tuneGrid, preProcess = preProcess, prob.model = TRUE)
+    } else{
+      stop("Invalid 'method'. Choose between 'rf' or 'svm'.", call. = FALSE)
+    }
+
+    pred <- caret::predict.train(model, test)
+    cm <- caret::confusionMatrix(pred, test[[target_col]], positive = as.character(n_class))
+    accuracy <- cm$overall['Accuracy']
+    precision <- cm$byClass['Pos Pred Value']
+    recall <- cm$byClass['Sensitivity']
+    f1_score <- 2 * (precision * recall)/(precision + recall)
+
+    metrics <- data.frame(accuracy = round(as.numeric(accuracy), 3),
+                          precision = round(as.numeric(precision), 3),
+                          recall = round(as.numeric(recall), 3),
+                          f1_score = round(as.numeric(f1_score), 3))
+    print(metrics)
+    write.table(metrics, path_metrics, append = FALSE)
+
+    imp <- caret::varImp(model, scale = TRUE)$importance |>
+      as.data.frame()
+    print(imp)
+    write.table(imp, path_var_imp, append = FALSE)
+
+    model_class <- terra::predict(x, model, progress = "text", type = "prob", index = 1:2, na.rm = TRUE)
+    plot(model_class[[predict]])
+    terra::writeRaster(model_class[[predict]], path_prediction, overwrite = TRUE)
+
+    return(model_class[[predict]])
   }
-  print(method)
-  pred <- caret::predict.train(model, test)
-  cm <- caret::confusionMatrix(pred, test[[target_col]], positive = n_class)
-  accuracy <- cm$overall['Accuracy']
-  precision <- cm$byClass['Pos Pred Value']
-  recall <- cm$byClass['Sensitivity']
-  f1_score <- 2 * (precision * recall)/(precision + recall)
-  metrics <- data.frame(accuracy = as.numeric(accuracy)|>
-                          round(3),
-                        precision = as.numeric(precision)|>
-                          round(3),
-                        recall = as.numeric(recall)|>
-                          round(3),
-                        f1_score = as.numeric(f1_score)|>
-                          round(3))
-  print(metrics)
-  write.table(metrics, path_metrics, append = F)
-  imp <- caret::varImp(model, scale = T)$importance|>
-    as.data.frame()
-  print(imp)
-  write.table(imp, path_var_imp, append = F)
-  model_class <- terra::predict(x, model, progress = "text", type = "prob", index = 1:2, na.rm = T)
-  plot(model_class[[predict]])
-  writeRaster(model_class[[predict]], path_prediction, overwrite = T)
 }

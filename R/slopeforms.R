@@ -16,17 +16,25 @@
 #'}
 #'
 #'@param x Input DEM raster file.
-#'@param sp_range Numeric. Number of neighbor cells for multiscalar analysis.
+#'@param sp_range Number of neighbor cells for multiscalar analysis.
 #'@param crs Input geodesic reference systems.
 #'
 #'@examples
-#' library(terra)
-#' library(slope)
-#' dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
-#' sf <- slope::slopeforms(dem, 7, 'EPSG:5880')
-#'
+#'\dontrun{
+#'library(terra)
+#'library(slope)
+#'dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
+#'sf <- slope::slopeforms(dem, 7, 'EPSG:5880')
+#'}
 #'@export
 slopeforms <- function(x, sp_range, crs){
+  if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){
+    stop("Argument 'x' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
+  } else if(missing(sp_range) || is.null(sp_range) || !is.numeric(sp_range)){
+    stop("Argument 'sp_range' must be provided and be a numeric value.", call. = FALSE)
+  } else if(missing(crs) || is.null(crs)){
+    stop("Argument 'crs' must be provided.", call. = FALSE)
+  } else{
   xx <- terra::rast(terra::sources(x))|>
     terra::project(crs)|>
     MultiscaleDTM::Qfit(w = c(3,3), unit = "degrees", metrics = "profc", na.rm = T)|>
@@ -57,4 +65,6 @@ slopeforms <- function(x, sp_range, crs){
   yci <- terra::classify(xy, ry, include.lowest = T, brackets = T)
   slopeforms <- xci + yci
   names(slopeforms) <- "slopeforms"
-  return(slopeforms)}
+  return(slopeforms)
+  }
+}

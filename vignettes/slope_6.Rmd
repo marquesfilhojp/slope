@@ -1,8 +1,8 @@
 ---
-title: "Thematic Suscetibility Mapping"
+title: "Geomorphic Change Detection"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Thematic Suscetibility Mapping}
+  %\VignetteIndexEntry{Geomorphic Change Detection}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -2,17 +2,24 @@
 #'
 #'Calculates minimum mappable area.
 #'
-#'@param scale Numeric. Cartographic scale
-#'@param res Numeric. Resolution of DEM.
+#'@param scale Cartographic scale
+#'@param res Resolution of DEM.
 #'
 #'@examples
-#' library(terra)
-#' library(slope)
-#' dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
-#' print(dem)
-#' mma <- slope::minimum_mappable_area(100000, 30)
+#'\dontrun{
+#'library(terra)
+#'library(slope)
+#'dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
+#'print(dem)
+#'mma <- slope::minimum_mappable_area(100000, 30)
+#'}
 #'@export
 mininum_mappable_area <- function(scale, res){
+  if(missing(scale) || is.null(scale) || !is.numeric(scale)){
+    stop("Argument 'scale' must be provided and be a numeric value.", call. = FALSE)
+  } else if(missing(res) || is.null(res) || is.numeric(res)){
+    stop("Argument 'res' must be provided and be a numeric value.", call. = FALSE)
+  } else{
   ds <- (scale * 0.002)**2
   mmu <- ds/(res^2)
   if(mmu >= 9 && mmu < 16){
@@ -40,4 +47,5 @@ mininum_mappable_area <- function(scale, res){
     print('Window size too large and can impact your DEM')
   }
   return(mmu)
+  }
 }

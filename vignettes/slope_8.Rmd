@@ -1,0 +1,19 @@
+---
+title: "Revised Universal Soil Loss Equation"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Revised Universal Soil Loss Equation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(slope)
+```

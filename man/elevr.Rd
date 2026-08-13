@@ -4,14 +4,12 @@
 \alias{elevr}
 \title{elevr}
 \usage{
-elevr(dem_type, aoi, proj, api_key, output_file)
+elevr(dem_type, aoi, api_key, output_file)
 }
 \arguments{
 \item{dem_type}{Currently supports "SRTMGL3", "SRTMGL1", "SRTMGL1_E", "AW3D30", "AW3D30_E", "SRTM15Plus", "NASADEM", "COP30", "COP90", "EU_DTM", "GEDI_L3", "GEBCOIceTopo", "GEBCOSubIceTopo", "CA_MRDEM_DTM", "CA_MRDEM_DSM", "ANADEM", "GEDTM30" from the OpenTopography API global datasets.}
 
 \item{aoi}{Defines the area of interest to crop/bound the elevation data, in *sf* format.}
-
-\item{proj}{Performs geodesic reference frame transformations and projective transformations. Default is NULL.}
 
 \item{api_key}{The OpenTopography API key.}
 
@@ -25,7 +23,7 @@ This function provides access to global raster elevation data from the OpenTopog
 library(pacman)
 p_load(sf, slope, terra)
 aoi <- sf::read_sf('ex/aoi.shp')
-data <- slope::elevr('GEDTM30', aoi, 'EPSG:5880', api_key, 'ex/dem.tif')
+data <- slope::elevr('GEDTM30', aoi, api_key, 'ex/dem.tif')
 plot(data)
 }
 }
