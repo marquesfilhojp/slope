@@ -1,4 +1,4 @@
-# elevr
+# Elevr
 
 This function provides access to global raster elevation data from the
 OpenTopography API.

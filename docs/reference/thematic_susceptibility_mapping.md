@@ -105,15 +105,13 @@ thematic_susceptibility_mapping(
 ## Examples
 
 ``` r
+if (FALSE) { # \dontrun{
 library(terra)
 library(slope)
 rasters <- terra::rast(system.file("ex/stack.tif", package = "terra"))
-#> Error: [rast] filename is empty. Provide a valid filename
 samples <- terra::vect(system.file("ex/samples.shp", package = "terra"))
-#> Error: [vect] file does not exist: 
 tsm <- slope::thematic_susceptibility_mapping(rasters, samples, "classes", 0.7, -c(1,3,15), 5, "rf", 10, 1000, NULL,
                                              "nzv", 1, 2, "ex/metrics.txt", "ex/var_imp.txt", "ex/predict.tif")
-#> Error: object 'rasters' not found
 plot(tsm)
-#> Error in h(simpleError(msg, call)): error in evaluating the argument 'x' in selecting a method for function 'plot': object 'tsm' not found
+} # }
 ```

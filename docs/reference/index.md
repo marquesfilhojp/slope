@@ -5,7 +5,7 @@
 - [`dissection_index()`](https://marquesfilhojp.github.io/slope/reference/dissection_index.md)
   : Dissection Index
 - [`elevr()`](https://marquesfilhojp.github.io/slope/reference/elevr.md)
-  : elevr
+  : Elevr
 - [`fill()`](https://marquesfilhojp.github.io/slope/reference/fill.md) :
   Fill
 - [`flow_accumulation()`](https://marquesfilhojp.github.io/slope/reference/flow_accumulation.md)

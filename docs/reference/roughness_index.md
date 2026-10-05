@@ -5,7 +5,7 @@ Calculates Roughness Index, based in Trevisani and Cavalli (2016).
 ## Usage
 
 ``` r
-roughness_index(x, sp_range)
+roughness_index(x, w)
 ```
 
 ## Arguments
@@ -16,7 +16,7 @@ roughness_index(x, sp_range)
 
 - w:
 
-  w Number of cells for the window size
+  Number of cells for the window size
 
 ## Examples
 

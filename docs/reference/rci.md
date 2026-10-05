@@ -6,7 +6,7 @@ methodology of Sampaio and Augustin (2014).
 ## Usage
 
 ``` r
-rci(x, sp_range, crs, aoi, unit)
+rci(x, w, crs, aoi, unit)
 ```
 
 ## Arguments
@@ -14,6 +14,10 @@ rci(x, sp_range, crs, aoi, unit)
 - x:
 
   Input DEM raster file.
+
+- w:
+
+  Number of cells for the window size
 
 - crs:
 
@@ -26,10 +30,6 @@ rci(x, sp_range, crs, aoi, unit)
 - unit:
 
   Metrics units in square kilometers.
-
-- w:
-
-  Number of cells for the window size
 
 ## Examples
 

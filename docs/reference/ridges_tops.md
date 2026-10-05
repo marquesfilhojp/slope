@@ -10,7 +10,7 @@ based on the minimum mappable area.
 ## Usage
 
 ``` r
-ridges_tops(x, sp_range, type)
+ridges_tops(x, w, type)
 ```
 
 ## Arguments
@@ -19,14 +19,14 @@ ridges_tops(x, sp_range, type)
 
   Input DEM raster
 
+- w:
+
+  Number of cells for the window size
+
 - type:
 
   Each number represents a specific landform, for example: (1) Convex
   hilltops and Interfluves, (2) Sharp crests, and (3) Ridges
-
-- w:
-
-  Number of cells for the window size
 
 ## Examples
 

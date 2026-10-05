@@ -14,6 +14,26 @@ Marques Filho, J. da P. (2026). marquesfilhojp/slope: *slope*: Identify
 slope patterns and processes (Version v0.3.2) \[Computer software\].
 Zenodo. <https://doi.org/10.5281/zenodo.21325742>
 
+## Installation
+
+To install the package, run one of the code blocks below:
+
+``` r
+
+# via remotes
+install.packages('remotes')
+remotes::install_github('marquesfilhojp/slope')
+library(slope)
+```
+
+``` r
+
+# via pak
+install.packages('pak')
+pak::pak('marquesfilhojp/slope')
+library(slope)
+```
+
 ## Dependencies
 
 The following dependencies are required for the proper performance of
@@ -64,7 +84,7 @@ at the Federal University of Rio de Janeiro.
 - [`dissection_index()`](https://marquesfilhojp.github.io/slope/reference/dissection_index.md)
   : Dissection Index
 - [`elevr()`](https://marquesfilhojp.github.io/slope/reference/elevr.md)
-  : elevr
+  : Elevr
 - [`fill()`](https://marquesfilhojp.github.io/slope/reference/fill.md) :
   Fill
 - [`flow_accumulation()`](https://marquesfilhojp.github.io/slope/reference/flow_accumulation.md)

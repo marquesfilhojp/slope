@@ -63,6 +63,21 @@
 <p>Marques Filho, J. da P. (2026). marquesfilhojp/slope: <em>slope</em>: Identify slope patterns and processes (Version v0.3.2) [Computer software]. Zenodo. <a href="https://doi.org/10.5281/zenodo.21325742" class="external-link uri">https://doi.org/10.5281/zenodo.21325742</a></p>
 </div>
 <div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>To install the package, run one of the code blocks below:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># via remotes</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'remotes'</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">'marquesfilhojp/slope'</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://marquesfilhojp.github.io/slope/">slope</a></span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># via pak</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'pak'</span><span class="op">)</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">'marquesfilhojp/slope'</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://marquesfilhojp.github.io/slope/">slope</a></span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
 <h2 id="dependencies">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a>
 </h2>
 <div align="justify">
@@ -90,9 +105,9 @@ Rtools45: https://cran.r-project.org/bin/windows/Rtools/rtools45/rtools.html </c
 <div align="justify">
 <p>On <em>Linux</em> distributions such as Ubuntu 22.04 LTS (Jammy Jellyfish) and other similar systems, it is recommended to initially install the R <code>terra</code> package to ensure the proper functioning of this package, for manipulating vector and raster data with following libraries GDAL (&gt;= 2.2.3), GEOS (&gt;= 3.4.0), PROJ (&gt;= 4.9.3), netcdf (&gt;=4.1.3), sqlite3 and tbb.</p>
 </div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository ppa:ubuntugis/ubuntugis-unstable</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">sudo</span> apt-get install libgdal-dev libgeos-dev libproj-dev libtbb-dev libnetcdf-dev</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository ppa:ubuntugis/ubuntugis-unstable</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="fu">sudo</span> apt-get install libgdal-dev libgeos-dev libproj-dev libtbb-dev libnetcdf-dev</span></code></pre></div>
 <div align="justify">
 <p>This package was developed in partnership with the Environmental Geomorphology and Soil Degradation Laboratory (<strong>LAGESOLOS</strong>) and the Remote Sensing and Environmental Studies Space Laboratory (<strong>ESPAÇO</strong>) at the Federal University of Rio de Janeiro.</p>
 </div>
