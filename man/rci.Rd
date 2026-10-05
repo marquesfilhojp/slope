@@ -4,18 +4,18 @@
 \alias{rci}
 \title{Roughness Concentration Index}
 \usage{
-rci(x, sp_range, crs, aoi, unit)
+rci(x, w, crs, aoi, unit)
 }
 \arguments{
 \item{x}{Input DEM raster file.}
+
+\item{w}{Number of cells for the window size}
 
 \item{crs}{Coordinate reference system (e.g., 'EPSG:5880')}
 
 \item{aoi}{Area of interest}
 
 \item{unit}{Metrics units in square kilometers.}
-
-\item{w}{Number of cells for the window size}
 }
 \description{
 Calculates the Roughness Concentration Index (RCI) based on the methodology of Sampaio and Augustin (2014).

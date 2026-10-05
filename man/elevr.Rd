@@ -2,7 +2,7 @@
 % Please edit documentation in R/elevr.R
 \name{elevr}
 \alias{elevr}
-\title{elevr}
+\title{Elevr}
 \usage{
 elevr(dem, aoi, api_key, output_file)
 }

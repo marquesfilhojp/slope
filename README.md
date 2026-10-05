@@ -10,6 +10,23 @@ For citation:
 
 Marques Filho, J. da P. (2026). marquesfilhojp/slope: *slope*: Identify slope patterns and processes (Version v0.3.2) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.21325742
 
+## Installation
+
+To install the package, run one of the code blocks below:
+
+```R
+# via remotes
+install.packages('remotes')
+remotes::install_github('marquesfilhojp/slope')
+library(slope)
+```
+```R
+# via pak
+install.packages('pak')
+pak::pak('marquesfilhojp/slope')
+library(slope)
+```
+
 ## Dependencies 
 
 <div align = "justify">

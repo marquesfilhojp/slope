@@ -4,14 +4,14 @@
 \alias{ridges_tops}
 \title{Ridges and Tops}
 \usage{
-ridges_tops(x, sp_range, type)
+ridges_tops(x, w, type)
 }
 \arguments{
 \item{x}{Input DEM raster}
 
-\item{type}{Each number represents a specific landform, for example: (1) Convex hilltops and Interfluves, (2) Sharp crests, and (3) Ridges}
-
 \item{w}{Number of cells for the window size}
+
+\item{type}{Each number represents a specific landform, for example: (1) Convex hilltops and Interfluves, (2) Sharp crests, and (3) Ridges}
 }
 \description{
 Detects different types of ridges and tops, based on Silveira and Silveira (2020).

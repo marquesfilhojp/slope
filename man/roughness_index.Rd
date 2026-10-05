@@ -4,12 +4,12 @@
 \alias{roughness_index}
 \title{Roughness Index}
 \usage{
-roughness_index(x, sp_range)
+roughness_index(x, w)
 }
 \arguments{
 \item{x}{Input DEM raster}
 
-\item{w}{w Number of cells for the window size}
+\item{w}{Number of cells for the window size}
 }
 \description{
 Calculates Roughness Index, based in Trevisani and Cavalli (2016).

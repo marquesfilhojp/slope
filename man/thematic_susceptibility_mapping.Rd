@@ -60,6 +60,7 @@ thematic_susceptibility_mapping(
 Performing different forms of thematic susceptibility mapping through machine learning, based on Filho et al. (2024).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 rasters <- terra::rast(system.file("ex/stack.tif", package = "terra"))
@@ -67,4 +68,5 @@ samples <- terra::vect(system.file("ex/samples.shp", package = "terra"))
 tsm <- slope::thematic_susceptibility_mapping(rasters, samples, "classes", 0.7, -c(1,3,15), 5, "rf", 10, 1000, NULL,
                                              "nzv", 1, 2, "ex/metrics.txt", "ex/var_imp.txt", "ex/predict.tif")
 plot(tsm)
+}
 }
