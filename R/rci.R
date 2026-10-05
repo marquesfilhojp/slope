@@ -18,7 +18,7 @@
 #'plot(rci)
 #'}
 #'@export
-rci <- function(x, sp_range, crs, aoi, unit){
+rci <- function(x, w, crs, aoi, unit){
   if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){
     stop("Argument 'x' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
   } else if(missing(w) || is.null(w) || !is.numeric(w)){

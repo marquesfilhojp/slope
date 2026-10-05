@@ -20,13 +20,15 @@
 #'@param path_prediction Path to save the susceptibility prediction in raster/matrix format.
 #'
 #'@examples
+#'\dontrun{
 #'library(terra)
 #'library(slope)
 #'rasters <- terra::rast(system.file("ex/stack.tif", package = "terra"))
 #'samples <- terra::vect(system.file("ex/samples.shp", package = "terra"))
 #'tsm <- slope::thematic_susceptibility_mapping(rasters, samples, "classes", 0.7, -c(1,3,15), 5, "rf", 10, 1000, NULL,
 #'                                              "nzv", 1, 2, "ex/metrics.txt", "ex/var_imp.txt", "ex/predict.tif")
-#' plot(tsm)
+#'plot(tsm)
+#'}
 #'@export
 thematic_susceptibility_mapping <- function(x, y, target_col, p, drop_cols, k_folds, method, mtry, ntree, cost, preProcess, n_class, predict, path_metrics, path_var_imp, path_prediction){
   if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){

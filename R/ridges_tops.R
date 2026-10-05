@@ -19,7 +19,7 @@
 #'plot(r)
 #'}
 #'@export
-ridges_tops <- function(x, sp_range, type){
+ridges_tops <- function(x, w, type){
   if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){
     stop("Argument 'x' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
   } else if(missing(w) || is.null(w) || !is.numeric(w)){

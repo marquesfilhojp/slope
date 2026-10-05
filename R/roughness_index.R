@@ -3,7 +3,7 @@
 #'Calculates Roughness Index, based in Trevisani and Cavalli (2016).
 #'
 #'@param x Input DEM raster
-#'@param w w Number of cells for the window size
+#'@param w Number of cells for the window size
 #'
 #'@examples
 #'\dontrun{
@@ -14,7 +14,7 @@
 #'plot(ri)
 #'}
 #'@export
-roughness_index <- function(x, sp_range){
+roughness_index <- function(x, w){
   if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){
     stop("Argument 'x' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
   } else if(missing(w) || is.null(w) || !is.numeric(w)){
