@@ -2,16 +2,16 @@
 #'
 #'Detects geomorphic change detection (DEMs of Difference) based in Wheathon et al. (2010).
 #'
-#'@param z_actual Input DEM raster file in second moment in time, using the same Earth Gravitational Model (EGM) for reduction in vertical error.
-#'@param z_dem Input DEM raster file in first moment in time,  using the same Earth Gravitational Model (EGM) for reduction in vertical error.
-#'@param crs Input geodesic reference systems.
-#'@param type Choice between deposition [0] or erosion [1].
+#'@param z_actual Input DEM raster in second moment in time, using the same Earth Gravitational Model (EGM) for reduction in vertical error.
+#'@param z_dem Input DEM raster in first moment in time, using the same Earth Gravitational Model (EGM) for reduction in vertical error.
+#'@param crs Coordinate reference system (e.g., 'EPSG:5880')
+#'@param type Choice between deposition [0] or erosion [1]
 #'
 #'@examples
 #'\dontrun{
 #' library(terra)
-#' z2 <- terra::rast(system.file("ex/elev.tif", package = "terra"))
-#' z1 <- terra::rast(system.file("ex/elev.tif", package = "terra"))
+#' z_actual <- terra::rast(system.file("ex/elev.tif", package = "terra"))
+#' z_dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 #' gcd <- slope::geomorphic_change_detection(z_actual, z_dem, 'EPSG:5880', 1)
 #' plot(gcd)
 #' }
@@ -21,8 +21,8 @@ geomorphic_change_detection <- function(z_actual, z_dem, crs, type){
     stop("Argument 'z_actual' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
   } else if(missing(z_dem) || is.null(z_dem) || !inherits(z_dem, "SpatRaster")){
     stop("Argument 'z_dem' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
-  } else if(terra::crs(z_actual) != terra::crs(z_dem)){
-    stop("Coordinate reference systems (CRS) of 'z_actual' and 'z_dem' do not match.", call. = FALSE)
+  } else if(missing(crs) || is.null(crs) || !is.character(crs)){
+    stop("Argument 'crs' must be provided and be a character string", call. = FALSE)
   } else if(missing(type) || is.null(type) || !is.numeric(type)){
     stop("Argument 'type' must be provided and be numeric (0 for deposition, 1 for erosion).", call. = FALSE)
   } else{

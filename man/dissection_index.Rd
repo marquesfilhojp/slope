@@ -4,20 +4,22 @@
 \alias{dissection_index}
 \title{Dissection Index}
 \usage{
-dissection_index(x, sp_range)
+dissection_index(x, w)
 }
 \arguments{
-\item{x}{Input DEM raster file.}
+\item{x}{Input DEM raster}
 
-\item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
+\item{w}{Number of cells for the window size}
 }
 \description{
-Detects spatial patterns of dissection, based in Evans (1972).
+Calculates the Dissection Index (DI) to detect spatial patterns of terrain dissection, based on Evans (1972).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 di <- slope::dissection_index(dem, 7)
 plot(di)
+}
 }

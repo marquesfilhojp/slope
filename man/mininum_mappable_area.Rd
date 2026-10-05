@@ -7,17 +7,19 @@
 mininum_mappable_area(scale, res)
 }
 \arguments{
-\item{scale}{Numeric. Cartographic scale}
+\item{scale}{Cartographic scale}
 
-\item{res}{Numeric. Resolution of DEM.}
+\item{res}{Resolution of DEM.}
 }
 \description{
 Calculates minimum mappable area.
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 print(dem)
 mma <- slope::minimum_mappable_area(100000, 30)
+}
 }

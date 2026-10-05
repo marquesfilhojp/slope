@@ -7,21 +7,23 @@
 geomorphic_change_detection(z_actual, z_dem, crs, type)
 }
 \arguments{
-\item{z_actual}{Input DEM raster file in second moment in time, using the same Earth Gravitational Model (EGM) for reduction in vertical error.}
+\item{z_actual}{Input DEM raster in second moment in time, using the same Earth Gravitational Model (EGM) for reduction in vertical error.}
 
-\item{z_dem}{Input DEM raster file in first moment in time,  using the same Earth Gravitational Model (EGM) for reduction in vertical error.}
+\item{z_dem}{Input DEM raster in first moment in time, using the same Earth Gravitational Model (EGM) for reduction in vertical error.}
 
-\item{crs}{Numeric. Input geodesic reference systems.}
+\item{crs}{Coordinate reference system (e.g., 'EPSG:5880')}
 
-\item{type}{Numeric. Choice between deposition [0] or erosion [1].}
+\item{type}{Choice between deposition [0] or erosion [1]}
 }
 \description{
 Detects geomorphic change detection (DEMs of Difference) based in Wheathon et al. (2010).
 }
 \examples{
+\dontrun{
 library(terra)
-z2 <- terra::rast(system.file("ex/elev.tif", package = "terra"))
-z1 <- terra::rast(system.file("ex/elev.tif", package = "terra"))
+z_actual <- terra::rast(system.file("ex/elev.tif", package = "terra"))
+z_dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 gcd <- slope::geomorphic_change_detection(z_actual, z_dem, 'EPSG:5880', 1)
 plot(gcd)
+}
 }

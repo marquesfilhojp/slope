@@ -1,10 +1,10 @@
 #'Dissection Index
 #'
-#'Detects spatial patterns of dissection, based in Evans (1972).
+#'Calculates the Dissection Index (DI) to detect spatial patterns of terrain dissection, based on Evans (1972).
 #'
-#'@param x Input DEM raster file.
-#'@param sp_range Number of neighbor cells for multiscalar analysis.
-
+#'@param x Input DEM raster
+#'@param w Number of cells for the window size
+#'
 #'@examples
 #'\dontrun{
 #'library(terra)
@@ -14,17 +14,18 @@
 #'plot(di)
 #'}
 #'@export
-dissection_index <- function(x, sp_range){
+dissection_index <- function(x, w){
   if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){
-    stop("Argument 'x' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
-  } else if(missing(sp_range) || is.null(sp_range) || !is.numeric(sp_range)){
+    stop("Argument 'dem' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
+  } else if(missing(w) || is.null(w) || !is.numeric(w)){
     stop("Argument 'sp_range' must be provided and be a numeric value.", call. = FALSE)
   } else{
   max <- x|>
-    terra::focal(sp_range, 'max')
+    terra::focal(w, 'max')
   min <- x|>
-    terra::focal(sp_range, 'min')
+    terra::focal(w, 'min')
   di <- (x - min)/(max - min)
-  names(di) <- "dissection_index"; return(di)
+  names(di) <- "dissection_index"
+  return(di)
   }
 }

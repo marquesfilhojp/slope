@@ -7,25 +7,27 @@
 slider(x, sp_range, crs, less_int_slope, more_int_slope, c)
 }
 \arguments{
-\item{x}{Input DEM raster file.}
+\item{x}{Input DEM raster}
 
-\item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
+\item{crs}{Coordinate reference system (e.g., 'EPSG:5880')}
 
-\item{crs}{Input geodesic reference systems.}
+\item{w}{Number of cells for the window size}
 
-\item{less_int_slope}{Numeric. Minimum slope angle.}
+\item{min_slope}{Minimum slope angle}
 
-\item{more_int_slope}{Numeric. Maximum slope angle.}
+\item{max_slope}{Maximum slope angle}
 
-\item{c}{Concave-concave slope (hollows), referring to code 11, see details in slopeforms.}
+\item{type}{Concave-concave slope (hollows), referring to code 11, see details in slopeforms}
 }
 \description{
 Detects debris flow based on the identification of hollows and critical slope thresholds.
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
-sd <- slope::slider(dem, 7, 'EPSG:5880', 21, 25, 11)
-plot(sd)
+slider <- slope::slider(dem, 7, 'EPSG:5880', 21, 25, 11)
+plot(slider)
+}
 }

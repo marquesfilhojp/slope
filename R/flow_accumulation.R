@@ -2,8 +2,8 @@
 #'
 #'Performs the flow accumulation in DEMs based on the wbt_flow_accumulation_full_workflow() function (Lindsay, 2016) for calculates sediment connectivity (Cavalli et al. 2013).
 #'
-#'@param x Input DEM raster file.
-#'@param type 'cells', 'sca' and 'ca'.
+#'@param x Input DEM raster
+#'@param type Flow accumulation calculation type: 'cells', 'sca', or 'ca'
 #'
 #'@examples
 #'\dontrun{
@@ -29,6 +29,7 @@ flow_accumulation <- function(x, type){
                                       out_pntr = out_pntr,
                                       out_accum = out_accum,
                                       out_type = type)
+
   return(terra::rast(out_accum))
   }
 }

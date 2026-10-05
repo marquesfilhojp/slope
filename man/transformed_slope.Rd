@@ -4,26 +4,28 @@
 \alias{transformed_slope}
 \title{Transformation (Normalization) Slope}
 \usage{
-transformed_slope(x, sp_range, lambda, crs, type)
+transformed_slope(x, w, lambda, crs, type)
 }
 \arguments{
-\item{x}{Input DEM raster file.}
+\item{x}{Input DEM raster}
 
-\item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
+\item{w}{Number of cells for the window size}
 
-\item{lambda}{Numeric. Only type [1]}
+\item{lambda}{Only type [1] and different from zero}
 
-\item{crs}{Input geodesic reference systems.}
+\item{crs}{Coordinate reference system (e.g., 'EPSG:5880')}
 
-\item{type}{Numeric. Choice between normalization based in Evans (1977) (2015) [0] or Csillik et al. (2015) [1].}
+\item{type}{Normalization methods based on Evans (1977, 2015) [0] or Csillik et al. (2015) [1].}
 }
 \description{
-Slope normalization, based in Csillik et al. (2015)
+Slope normalization based in Csillik et al. (2015)
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 tc <- slope::transformed_slope(dem, 7, 0.1, 'EPSG:5880', 1)
 plot(tc)
+}
 }

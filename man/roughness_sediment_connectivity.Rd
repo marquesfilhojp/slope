@@ -4,26 +4,28 @@
 \alias{roughness_sediment_connectivity}
 \title{Roughness Sediment Connectivity}
 \usage{
-roughness_sediment_connectivity(x, sp_range, fa, fp)
+roughness_sediment_connectivity(x, w, flow_acc, flow_path)
 }
 \arguments{
-\item{x}{Input DEM raster file.}
+\item{x}{Input DEM raster}
 
-\item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
+\item{w}{Number of cells for the window size}
 
-\item{fa}{Input Flow Accumulation raster file.}
+\item{flow_acc}{Input Flow Accumulation raster}
 
-\item{fp}{Input Flow Path raster file.}
+\item{flow_path}{Input Flow Path raster}
 }
 \description{
-Calculates sediment connectivity where w is roughness, based in Cavalli et al. (2013).
+Calculates sediment connectivity, based in Cavalli et al. (2013).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
-fa <- terra:rast(system.file("ex/accum.tif", package = "terra"))
-fp <- terra:rast(system.file("ex/flow_path.tif", package = "terra"))
-ic <- slope::roughness_sediment_connectivity(dem, 5, fa, fp)
-plot(ic)
+flow_acc <- terra:rast(system.file("ex/accum.tif", package = "terra"))
+flow_path <- terra:rast(system.file("ex/flow_path.tif", package = "terra"))
+rsc <- slope::roughness_sediment_connectivity(dem, 5, fa, fp)
+plot(rsc)
+}
 }

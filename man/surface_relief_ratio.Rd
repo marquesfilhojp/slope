@@ -4,20 +4,22 @@
 \alias{surface_relief_ratio}
 \title{Surface Relief Ratio}
 \usage{
-surface_relief_ratio(x, sp_range)
+surface_relief_ratio(x, w)
 }
 \arguments{
-\item{x}{Input DEM raster file.}
+\item{x}{Input DEM raster}
 
-\item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
+\item{w}{Number of cells for the window size}
 }
 \description{
-Calculates Surface Relief Ratio, based Berry (2002).
+Calculates Surface Relief Ratio, based on Berry (2002).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 srr <- slope::surface_relief_ratio(dem, 7)
 plot(srr)
+}
 }

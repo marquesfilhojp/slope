@@ -7,21 +7,23 @@
 hillshade(x, w, angle, direction)
 }
 \arguments{
-\item{x}{Input slopeforms raster result.}
+\item{x}{Input DEM raster}
 
-\item{w}{Numeric. Moving window size for the median filter.}
+\item{w}{Number of cells for the window size}
 
-\item{angle}{Numeric. Illumination angle (altitude) in degrees.}
+\item{angle}{Illumination angle (altitude) in degrees}
 
-\item{direction}{Numeric. Illumination direction (azimuth) in degrees.}
+\item{direction}{Illumination direction (azimuth) in degrees}
 }
 \description{
-Calculates the area and percentages of slope forms for tabular visualization.
+Calculates shaded relief (hillshade) from a Digital Elevation Model (DEM).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 shade <- slope::hillshade(dem, 3, 45, 315)
 plot(shade)
+}
 }

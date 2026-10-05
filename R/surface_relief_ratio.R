@@ -1,9 +1,9 @@
 #'Surface Relief Ratio
 #'
-#'Calculates Surface Relief Ratio, based Berry (2002).
+#'Calculates Surface Relief Ratio, based on Berry (2002).
 #'
-#'@param x Input DEM raster file.
-#'@param sp_range Number of neighbor cells for multiscalar analysis.
+#'@param x Input DEM raster
+#'@param w Number of cells for the window size
 #'
 #'@examples
 #'\dontrun{
@@ -14,19 +14,20 @@
 #'plot(srr)
 #'}
 #'@export
-surface_relief_ratio <- function(x, sp_range){
+surface_relief_ratio <- function(x, w){
   if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){
     stop("Argument 'x' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
-  } else if(missing(sp_range) || is.null(sp_range) || !is.numeric(sp_range)){
-    stop("Argument 'sp_range' must be provided and be a numeric value.", call. = FALSE)
+  } else if(missing(w) || is.null(w) || !is.numeric(w)){
+    stop("Argument 'w' must be provided and be a numeric value.", call. = FALSE)
   } else{
   max <- x|>
-    terra::focal(sp_range, 'max')
+    terra::focal(w, 'max')
   min <- x|>
     terra::focal(sp_range, 'min')
   mean <- x|>
-    terra::focal(sp_range, 'mean')
+    terra::focal(w, 'mean')
   srr <- (mean - min)/(max - min)
+  names(srr) <- "surface_relief_ratio"
   return(srr)
   }
 }

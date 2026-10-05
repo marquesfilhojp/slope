@@ -1,17 +1,17 @@
 #'Streams
 #'
-#'Performs identification of streams in DEMs based on the wbt_extract_streams() function (Lindsay, 2016) for calculates sediment connectivity (Cavalli et al. 2013).
+#'Identification of streams in DEMs based on the wbt_extract_streams() function (Lindsay, 2016) to calculate sediment connectivity (Cavalli et al., 2013).
 #'
-#'@param x Input Flow Accumulation raster file.
-#'@param threshold Extraction of streams.
+#'@param x Input Flow Accumulation raster
+#'@param threshold Threshold value for stream extraction
 #'
 #'@examples
 #'\dontrun{
 #'library(terra)
 #'library(slope)
-#'fa <- terra::rast(system.file("ex/accum.tif", package = "terra"))
-#'s <- slope::streams(fa, 500)
-#'plot(s)
+#'flow_acc <- terra::rast(system.file("ex/accum.tif", package = "terra"))
+#'streams <- slope::streams(flow_acc, 500)
+#'plot(streams)
 #'}
 #'@export
 streams <- function(x, threshold){

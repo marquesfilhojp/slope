@@ -1,0 +1,143 @@
+![](reference/figures/slope.png)
+
+## *slope*: An R Package for Geomorphometric Analysis
+
+*slope* is an experimental R package providing distinct geomorphometric
+approaches, commonly unavailable in traditional GIS environments,
+focused on the reproducibility and replicability of geomorphometric
+analyses. Additionally, the scope of this project implements classical
+geomorphometric methods fundamental to the scientific community.
+
+For citation:
+
+Marques Filho, J. da P. (2026). marquesfilhojp/slope: *slope*: Identify
+slope patterns and processes (Version v0.3.2) \[Computer software\].
+Zenodo. <https://doi.org/10.5281/zenodo.21325742>
+
+## Dependencies
+
+The following dependencies are required for the proper performance of
+the R package `slope`: **caret**, **classInt**, **ggplot2**, **httr2**,
+**MultiscaleDTM**, **sf**, **spatstat**, **terra** and **whitebox**.
+
+## ⚙️ Installation by Operating System
+
+Currently, the R package *slope* v.0.5.1 has been developed solely for
+*Windows* operating systems and *Linux* distributions such as Debian,
+Ubuntu, and Linux—specifically **version 22.04 LTS Jammy Jellyfish**.
+
+### 🪟 Windows
+
+It is recommended to use R version 4.5.x or higher and Rtools 45 or
+higher to install the R package `terra`, which is essential for the
+operation of this package.
+
+``` https
+R v.4.5.x: https://cran.r-project.org/bin/windows/base/old/4.5.3/
+Rtools45: https://cran.r-project.org/bin/windows/Rtools/rtools45/rtools.html 
+```
+
+### 🐧 Linux
+
+On *Linux* distributions such as Ubuntu 22.04 LTS (Jammy Jellyfish) and
+other similar systems, it is recommended to initially install the R
+`terra` package to ensure the proper functioning of this package, for
+manipulating vector and raster data with following libraries GDAL (\>=
+2.2.3), GEOS (\>= 3.4.0), PROJ (\>= 4.9.3), netcdf (\>=4.1.3), sqlite3
+and tbb.
+
+``` bash
+sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+sudo apt-get update
+sudo apt-get install libgdal-dev libgeos-dev libproj-dev libtbb-dev libnetcdf-dev
+```
+
+This package was developed in partnership with the Environmental
+Geomorphology and Soil Degradation Laboratory (**LAGESOLOS**) and the
+Remote Sensing and Environmental Studies Space Laboratory (**ESPAÇO**)
+at the Federal University of Rio de Janeiro.
+
+# Package index
+
+## All functions
+
+- [`dissection_index()`](https://marquesfilhojp.github.io/slope/reference/dissection_index.md)
+  : Dissection Index
+- [`elevr()`](https://marquesfilhojp.github.io/slope/reference/elevr.md)
+  : elevr
+- [`fill()`](https://marquesfilhojp.github.io/slope/reference/fill.md) :
+  Fill
+- [`flow_accumulation()`](https://marquesfilhojp.github.io/slope/reference/flow_accumulation.md)
+  : Flow Accumulation
+- [`flow_path()`](https://marquesfilhojp.github.io/slope/reference/flow_path.md)
+  : Flow Path
+- [`geomorphic_change_detection()`](https://marquesfilhojp.github.io/slope/reference/geomorphic_change_detection.md)
+  : Geomorphic Change Detection
+- [`hillshade()`](https://marquesfilhojp.github.io/slope/reference/hillshade.md)
+  : Hillshade
+- [`ls_factor()`](https://marquesfilhojp.github.io/slope/reference/ls_factor.md)
+  : LS Factor
+- [`mininum_mappable_area()`](https://marquesfilhojp.github.io/slope/reference/mininum_mappable_area.md)
+  : Mininum Mappable Area
+- [`non_occurence_samples()`](https://marquesfilhojp.github.io/slope/reference/non_occurence_samples.md)
+  : Non Occurrence Samples
+- [`normalization()`](https://marquesfilhojp.github.io/slope/reference/normalization.md)
+  : Transformation (Normalization)
+- [`physical_geomorphometry()`](https://marquesfilhojp.github.io/slope/reference/physical_geomorphometry.md)
+  : Physical Geomorphometry
+- [`physical_geomorphometry_plot()`](https://marquesfilhojp.github.io/slope/reference/physical_geomorphometry_plot.md)
+  : Physical Geomorphometry Plot
+- [`rci()`](https://marquesfilhojp.github.io/slope/reference/rci.md) :
+  Roughness Concentration Index
+- [`ridges_tops()`](https://marquesfilhojp.github.io/slope/reference/ridges_tops.md)
+  : Ridges and Tops
+- [`roughness_index()`](https://marquesfilhojp.github.io/slope/reference/roughness_index.md)
+  : Roughness Index
+- [`roughness_sediment_connectivity()`](https://marquesfilhojp.github.io/slope/reference/roughness_sediment_connectivity.md)
+  : Roughness Sediment Connectivity
+- [`sediment_connectivity()`](https://marquesfilhojp.github.io/slope/reference/sediment_connectivity.md)
+  : Sediment Connectivity
+- [`sediment_transport_index()`](https://marquesfilhojp.github.io/slope/reference/sediment_transport_index.md)
+  : Sediment Transport Index
+- [`slider()`](https://marquesfilhojp.github.io/slope/reference/slider.md)
+  : Slider
+- [`slopeforms()`](https://marquesfilhojp.github.io/slope/reference/slopeforms.md)
+  : Slope Forms
+- [`streams()`](https://marquesfilhojp.github.io/slope/reference/streams.md)
+  : Streams
+- [`surface_relief_ratio()`](https://marquesfilhojp.github.io/slope/reference/surface_relief_ratio.md)
+  : Surface Relief Ratio
+- [`thematic_susceptibility_mapping()`](https://marquesfilhojp.github.io/slope/reference/thematic_susceptibility_mapping.md)
+  : Thematic Susceptibility Mapping
+- [`topographic_wetness_index()`](https://marquesfilhojp.github.io/slope/reference/topographic_wetness_index.md)
+  : Topographic Wetness Index
+- [`transformed_curvature()`](https://marquesfilhojp.github.io/slope/reference/transformed_curvature.md)
+  : Transformation (Normalization) Curvature
+- [`transformed_slope()`](https://marquesfilhojp.github.io/slope/reference/transformed_slope.md)
+  : Transformation (Normalization) Slope
+- [`valleys()`](https://marquesfilhojp.github.io/slope/reference/valleys.md)
+  : Valleys
+
+# Articles
+
+### All vignettes
+
+- [Open Topography Global
+  Datasets](https://marquesfilhojp.github.io/slope/articles/slope_1.md):
+- [Hillshade](https://marquesfilhojp.github.io/slope/articles/slope_2.md):
+- [Vertical
+  Accuracy](https://marquesfilhojp.github.io/slope/articles/slope_3.md):
+- [DEM
+  Preprocessing](https://marquesfilhojp.github.io/slope/articles/slope_4.md):
+- [Land Surface
+  Parameters](https://marquesfilhojp.github.io/slope/articles/slope_5.md):
+- [Geomorphic Change
+  Detection](https://marquesfilhojp.github.io/slope/articles/slope_6.md):
+- [Sediment
+  Connectivity](https://marquesfilhojp.github.io/slope/articles/slope_7.md):
+- [Revised Universal Soil Loss
+  Equation](https://marquesfilhojp.github.io/slope/articles/slope_8.md):
+- [Thematic Susceptibility
+  Modeling](https://marquesfilhojp.github.io/slope/articles/slope_9.md):
+- [Introduction Slope R
+  Package](https://marquesfilhojp.github.io/slope/articles/slope.md):

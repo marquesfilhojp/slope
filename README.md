@@ -1,6 +1,6 @@
 <img src = "man/figures/slope.png" align = "right" width = "150" style = "margin: 0 0 10px 10px;" />
 
-## *slope*: An R Package Identify Slope Patterns and Processes
+## *slope*: An R Package for Geomorphometric Analysis
 <div align = "justify">
 *slope* is an experimental R package providing distinct geomorphometric approaches, commonly unavailable in traditional GIS environments, focused on the reproducibility and replicability of geomorphometric analyses. 
 Additionally, the scope of this project implements classical geomorphometric methods fundamental to the scientific community.

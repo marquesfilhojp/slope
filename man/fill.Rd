@@ -7,9 +7,9 @@
 fill(x, y)
 }
 \arguments{
-\item{x}{Input DEM raster file.}
+\item{x}{Input DEM raster}
 
-\item{y}{Output filled raster file.}
+\item{y}{Output filled raster file}
 }
 \description{
 Performs the filling of spurious depressions in DEMs based on the wbt_fill_depressions() function (Lindsay, 2016).

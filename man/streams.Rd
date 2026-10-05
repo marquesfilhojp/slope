@@ -7,17 +7,19 @@
 streams(x, threshold)
 }
 \arguments{
-\item{x}{Input Flow Accumulation raster file.}
+\item{x}{Input Flow Accumulation raster}
 
-\item{threshold}{Numeric. For extraction of streams.}
+\item{threshold}{Threshold value for stream extraction}
 }
 \description{
-Performs identification of streams in DEMs based on the wbt_extract_streams() function (Lindsay, 2016) for calculates sediment connectivity (Cavalli et al. 2013).
+Identification of streams in DEMs based on the wbt_extract_streams() function (Lindsay, 2016) to calculate sediment connectivity (Cavalli et al., 2013).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
-fa <- terra::rast(system.file("ex/accum.tif", package = "terra"))
-s <- slope::streams(fa, 500)
-plot(s)
+flow_acc <- terra::rast(system.file("ex/accum.tif", package = "terra"))
+streams <- slope::streams(flow_acc, 500)
+plot(streams)
+}
 }

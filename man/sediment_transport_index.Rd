@@ -4,24 +4,30 @@
 \alias{sediment_transport_index}
 \title{Sediment Transport Index}
 \usage{
-sediment_transport_index(x, type, m, n)
+sediment_transport_index(x, type, crs, m, n, res)
 }
 \arguments{
-\item{x}{Input DEM raster file.}
+\item{x}{Input DEM raster}
 
-\item{type}{Float. 'cells', 'sca' and 'ca'.}
+\item{type}{Flow accumulation calculation type: 'cells', 'sca', or 'ca'}
 
-\item{m}{Float. Exponent of first equation.}
+\item{crs}{Coordinate reference system (e.g., 'EPSG:5880')}
 
-\item{n}{Float. Exponent of second equation.}
+\item{m}{Exponent of first equation}
+
+\item{n}{Exponent of second equation}
+
+\item{res}{Resolution of DEM}
 }
 \description{
 Calculates Sediment Transport Index, based in Moore and Burch (1986).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
-twi <- slope::topographic_wetness_index(dem, 'sca')
-plot(twi)
+sti <- slope::topographic_wetness_index(dem, 'sca')
+plot(sti)
+}
 }

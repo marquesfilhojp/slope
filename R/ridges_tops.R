@@ -1,14 +1,14 @@
 #'Ridges and Tops
 #'
-#'Detects different types of Ridges and Tops, based on Silveira and Silveira (2020).
+#'Detects different types of ridges and tops, based on Silveira and Silveira (2020).
 #'The primary difference is the use of a rectangular local neighborhood shape instead
-#'of a circular one, in calculus of White Top Hat (WTH) (Rodriguez et al. 2002).
+#'of a circular one, in the calculation of the White Top Hat (WTH) (Rodriguez et al., 2002).
 #'For more satisfactory results, it is recommended to define the
 #'moving window based on the minimum mappable area.
 #'
-#'@param x Input DEM raster file.
-#'@param sp_range Number of neighbor cells for multiscalar analysis.
-#'@param type Each number represents a specific landform, for example: (1) Convex Hilltops and Interfluves, (2) Sharp Crests, and (3) Ridges
+#'@param x Input DEM raster
+#'@param w Number of cells for the window size
+#'@param type Each number represents a specific landform, for example: (1) Convex hilltops and Interfluves, (2) Sharp crests, and (3) Ridges
 #'
 #'@examples
 #'\dontrun{
@@ -22,14 +22,13 @@
 ridges_tops <- function(x, sp_range, type){
   if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){
     stop("Argument 'x' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
-  } else if(missing(sp_range) || is.null(sp_range) || !is.numeric(sp_range)){
-    stop("Argument 'sp_range' must be provided and be a numeric value.", call. = FALSE)
+  } else if(missing(w) || is.null(w) || !is.numeric(w)){
+    stop("Argument 'w' must be provided and be a numeric value.", call. = FALSE)
   } else if(missing(type) || is.null(type) || !is.numeric(type)){
-    stop("Argument 'type' must be provided and be a numeric value (1, 2, or 3).", call. = FALSE)
+    stop("Argument 'type' must be provided and be a numeric value (e.g., 1, 2, or 3).", call. = FALSE)
   } else{
-  x <- terra::rast(terra::sources(x))
-  maxmin <-  terra::focal(x, sp_range, 'min')|>
-    terra::focal(sp_range, 'max')
+  maxmin <-  terra::focal(x, w, 'min')|>
+    terra::focal(w, 'max')
   wth <- x - maxmin
   area <- terra::project(dem, 'EPSG:5880')|>
     terra::expanse()/1000000
@@ -37,12 +36,15 @@ ridges_tops <- function(x, sp_range, type){
   sd <- as.numeric(terra::global(wth, "sd", na.rm = TRUE)[1, 1])
   if(type == 1){
     r <- terra::ifel(wth > (1 * sd), 1, 0)
+    names(r) <- "convex_hilltops"
   } else if(type == 2) {
     r <- terra::ifel(wth > (6 * sd), 1, 0)
+    names(r) <- "sharp_crests"
   } else if(type == 3) {
     r <- terra::ifel(wth > (2 * sd) & area_km2 > 1, 1, 0)
+    names(r) <- "ridges"
   } else{
-    print('Parameter condition is null or different of the pattern')
+    stop("Argument 'type' must be 1, 2, or 3.", call. = FALSE)
   }
   return(r)
   }

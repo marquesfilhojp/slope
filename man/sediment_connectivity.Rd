@@ -4,32 +4,31 @@
 \alias{sediment_connectivity}
 \title{Sediment Connectivity}
 \usage{
-sediment_connectivity(x, w, sp_range, fa, fp)
+sediment_connectivity(x, c, w, flow_acc, flow_path)
 }
 \arguments{
-\item{x}{Input DEM raster file.}
+\item{x}{Input DEM raster}
 
-\item{w}{C Factor reclassified based in Revised Equation Soil Loss Equation.}
+\item{c}{C Factor reclassified based in Revised Equation Soil Loss Equation}
 
-\item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
+\item{w}{Number of cells for the window size}
 
-\item{fa}{Input Flow Accumulation raster file.}
+\item{flow_acc}{Input Flow Accumulation raster}
 
-\item{fp}{Input Flow Path raster file.}
+\item{flow_path}{Input Flow Path raster}
 }
 \description{
-\strong{Sediment Connectivity}
-}
-\details{
 Calculates sediment connectivity, based in Borelli et al. (2008).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
-w <- terra::rast(system.file("ex/lulc.tif", package = "terra"))
-fa <- terra:rast(system.file("ex/accum.tif", package = "terra"))
-fp <- terra:rast(system.file("ex/flow_path.tif", package = "terra"))
-ic <- slope::sediment_connectivity(dem, 5, fa, fp)
-plot(ic)
+c <- terra::rast(system.file("ex/lulc.tif", package = "terra"))
+flow_acc <- terra:rast(system.file("ex/accum.tif", package = "terra"))
+flow_path <- terra:rast(system.file("ex/flow_path.tif", package = "terra"))
+sc <- slope::sediment_connectivity(dem, 5, fa, fp)
+plot(sc)
+}
 }

@@ -7,17 +7,19 @@
 roughness_index(x, sp_range)
 }
 \arguments{
-\item{x}{Input DEM raster file.}
+\item{x}{Input DEM raster}
 
-\item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
+\item{w}{w Number of cells for the window size}
 }
 \description{
 Calculates Roughness Index, based in Trevisani and Cavalli (2016).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 ri <- slope::roughness_index(dem, 5)
 plot(ri)
+}
 }

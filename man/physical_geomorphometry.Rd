@@ -7,15 +7,17 @@
 physical_geomorphometry(x)
 }
 \arguments{
-\item{x}{Input slopeforms raster result.}
+\item{x}{Input slopeforms raster}
 }
 \description{
 Calculates the area and percentages of slope forms for tabular visualization.
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 sf <- terra::rast('ex/slopeforms.tif', package = "terra")
 pg <- slope::physical_geomorphometry(sf)
 plot(pg)
+}
 }

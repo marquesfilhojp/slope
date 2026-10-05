@@ -2,32 +2,32 @@
 #'
 #'Performing different forms of thematic susceptibility mapping through machine learning, based on Filho et al. (2024).
 #'
-#'@param x Input stack raster files.
-#'@param y Input samples (vector files) in terra or sf package R.
-#'@param target_col Numeric. Target field of occurrence.
-#'@param p Numeric. Regarding the number of samples representing the non-occurrence of events, it is suggested, in order to balance the sample set, to use a sample size equal to the number of event occurrences.
+#'@param x Input stack raster
+#'@param y Input samples (vector files)
+#'@param target_col Target field of occurrence
+#'@param p Regarding the number of samples representing the non-occurrence of events, it is suggested, in order to balance the sample set, to use a sample size equal to the number of event occurrences.
 #'@param drop_cols This allows you to remove information that will not be used in susceptibility modeling.
-#'@param k_folds Numeric. Number of folds or number of resampling iterations, using cross-validation method.
+#'@param k_folds Number of folds or number of resampling iterations, using cross-validation method.
 #'@param method Random Forest "rf" or Support Vector Machine "svm"
-#'@param mtry Numeric. Randomly selected predictors
-#'@param ntree Numeric. Decision tree number
-#'@param cost Numeric. Constraint violation cost, where 'C' is the regularization parameter.
+#'@param mtry Randomly selected predictors
+#'@param ntree Decision tree number
+#'@param cost Constraint violation cost, where 'C' is the regularization parameter.
 #'@param preProcess Estimates the required parameters for each operation (e.g., 'nzv' for near-zero variance filtering, or c('center', 'scale') for normalization). For details on available pre-processing methods, see the caret package R documentation.
-#'@param n_class Numeric. The positive class value for the confusion matrix (e.g., 0 for non-occurrence and 1 for occurrence).
-#'@param predict Numeric. Predicted thematic susceptibility status, where 1 indicates non-occurrence and 2 indicates occurrence.
-#'@param path_metrics Character. Path to save the machine learning model metrics in tabular format.
-#'@param path_var_imp Character. Path to save the machine learning model variable importance in tabular format.
-#'@param path_prediction Character. Path to save the susceptibility prediction in raster/matrix format.
+#'@param n_class The positive class value for the confusion matrix (e.g., 0 for non-occurrence and 1 for occurrence).
+#'@param predict Predicted thematic susceptibility status, where 0 indicates non-occurrence and 1 indicates occurrence.
+#'@param path_metrics Path to save the machine learning model metrics in tabular format.
+#'@param path_var_imp Path to save the machine learning model variable importance in tabular format.
+#'@param path_prediction Path to save the susceptibility prediction in raster/matrix format.
 #'
 #'@examples
-#' library(pacman)
-#' p_load(terra, slope)
-#' rasters <- terra::rast(system.file("ex/stack.tif", package = "terra"))
-#' samples <- terra::vect(system.file("ex/samples.shp", package = "terra"))
-#' tsm <- slope::thematic_susceptibility_mapping(rasters, samples, "classes", 0.7, -c(1,3,15), 5, "rf", 10, 1000, NULL,
+#'library(terra)
+#'library(slope)
+#'rasters <- terra::rast(system.file("ex/stack.tif", package = "terra"))
+#'samples <- terra::vect(system.file("ex/samples.shp", package = "terra"))
+#'tsm <- slope::thematic_susceptibility_mapping(rasters, samples, "classes", 0.7, -c(1,3,15), 5, "rf", 10, 1000, NULL,
 #'                                              "nzv", 1, 2, "ex/metrics.txt", "ex/var_imp.txt", "ex/predict.tif")
 #' plot(tsm)
-#'
+#'@export
 thematic_susceptibility_mapping <- function(x, y, target_col, p, drop_cols, k_folds, method, mtry, ntree, cost, preProcess, n_class, predict, path_metrics, path_var_imp, path_prediction){
   if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){
     stop("Argument 'x' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)

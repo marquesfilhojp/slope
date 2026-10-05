@@ -1,3 +1,7 @@
+# slope 0.5.8
+
+* Fix parameter validation, CRS handling, and variable references across core geomorphometry functions, and update roxygen2 documentation.
+
 # slope 0.5.3
 
 * Fix implementation bugs in hillshade.

@@ -2,13 +2,13 @@
 #'
 #'Detects different types of valleys, based on Silveira and Silveira (2020).
 #'The primary difference is the use of a rectangular local neighborhood shape instead
-#'of a circular one, in calculus of Black Top Hat (BTW) (Rodriguez et al. 2002).
+#'of a circular one, in the calculation of Black Top Hat (BTH) (Rodriguez et al., 2002).
 #'For more satisfactory results, it is recommended to define the
-#'moving window based on the minimum mappable area and function fill()
+#'moving window based on the minimum mappable area and the fill() function.
 #'
-#'@param x Input DEM raster file.
-#'@param sp_range Numeric. Number of neighbor cells for multiscalar analysis.
-#'@param type Numeric. Each number represents a specific landform, for example: (1) Flat-bottomed Valleys, (2) Open Valleys, and (3) Incised Valleys
+#'@param x Input DEM raster
+#'@param w Number of cells for the window size
+#'@param type Each number represents a specific landform, for example: (1) Flat-bottomed valleys, (2) Open valleys, and (3) Incised valleys.
 #'
 #'@examples
 #'\dontrun{
@@ -16,38 +16,40 @@
 #'library(slope)
 #'dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 #'dem_fill <- slope::fill(dem, system.file("ex/fill.tif'))
-#'v <- slope::valleys(dem, 7, 3)
-#'plot(v)
+#'valleys <- slope::valleys(dem, 7, 3)
+#'plot(valleys)
 #'}
 #'@export
-valleys <- function(x, sp_range, c){
+valleys <- function(x, w, type){
   if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){
     stop("Argument 'x' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
-  } else if(missing(sp_range) || is.null(sp_range) || !is.numeric(sp_range)){
-    stop("Argument 'sp_range' must be provided and be a numeric value.", call. = FALSE)
-  } else if(missing(c) || is.null(c) || !is.numeric(c)){
-    stop("Argument 'c' must be provided and be a numeric value (1, 2, or 3).", call. = FALSE)
+  } else if(missing(w) || is.null(w) || !is.numeric(w)){
+    stop("Argument 'w' must be provided and be a numeric value.", call. = FALSE)
+  } else if(missing(type) || is.null(type) || !is.numeric(type)){
+    stop("Argument 'type' must be provided and be a numeric value (e.g., 1, 2, or 3).", call. = FALSE)
   } else{
-  x <- terra::rast(terra::sources(x))
-  minmax <- terra::focal(x, sp_range, 'max')|>
-    terra::focal(sp_range, 'min')
+  minmax <- terra::focal(x, w, 'max')|>
+    terra::focal(w, 'min')
   bth <- minmax - x
-  fa <- terra::terrain(x, v = 'flowdir', neighbors = 8, unit = 'degrees')|>
+  flow_acc <- terra::terrain(x, v = 'flowdir', neighbors = 8)|>
     terra::flowAccumulation()
-  k <- terra::cellSize(fa, unit = 'm')
-  a <- (fa* k/1000000)
-  ac <- terra::crop(a, x, mask = T)
+  size <- terra::cellSize(flow_acc, unit = 'm')
+  ac <- (flow_acc * size/1000000)
   sd <- as.numeric(terra::stdev(bth))
-  if(c == 1){
-    v <- terra::ifel(ac > 1 & bth < sd, 1, 0)
-  } else if (c == 2) {
-    v <- terra::ifel(ac > 1 & bth > 1 & bth < (3 * sd), 1, 0)
-    v <- terra::ifel(ac > 1 & bth > sd & bth < (3 * sd), 1, 0)
-  } else if (c == 3){
-    v <- terra::ifel(ac > 1 & bth > (3 * sd), 1, 0)
+  if(type == 1){
+    valley <- terra::ifel(ac > 1 & bth < sd, 1, NA)
+    names(valley) <- "flat_bottomed_valleys"
+  } else if (type == 2) {
+    valley_1 <- terra::ifel(ac > 1 & bth > 1 & bth < (3 * sd), 1, 0)
+    valley_2 <- terra::ifel(ac > 1 & bth > sd & bth < (3 * sd), 1, 0)
+    valley <- terra::ifel((valley_1 + valley_2) > 0, 1, NA)
+    names(valley) <- "open_valleys"
+  } else if (type == 3){
+    valley <- terra::ifel(ac > 1 & bth > (3 * sd), 1, NA)
+    names(valley) <- "incised_valleys"
   } else{
-    print('Parameter condition is null or different of the pattern')
+    stop("Argument 'type' must be 1, 2, or 3.", call. = FALSE)
   }
-  return(v)
+  return(valley)
   }
 }

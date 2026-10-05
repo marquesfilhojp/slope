@@ -4,20 +4,22 @@
 \alias{normalization}
 \title{Transformation (Normalization)}
 \usage{
-normalization(x, sp_range)
+normalization(x, w)
 }
 \arguments{
-\item{x}{Input DEM raster file.}
+\item{x}{Input DEM raster}
 
-\item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
+\item{w}{Number of cells for the window size}
 }
 \description{
-Performs normalization of Land Surface Parameters (LSPs), based Huang et al. (2021)
+Normalization of Land Surface Parameters (LSPs), based Huang et al. (2021)
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 ni <- slope::normalization(dem, 7)
 plot(ni)
+}
 }

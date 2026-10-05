@@ -7,18 +7,20 @@
 flow_path(x, y)
 }
 \arguments{
-\item{x}{Input DEM raster file.}
+\item{x}{Input DEM raster}
 
-\item{y}{Input Streams raster file.}
+\item{y}{Input streams raster}
 }
 \description{
 Performs the flow path in DEMs based on the wbt_downslope_distance_to_stream() function (Lindsay, 2016) for calculates sediment connectivity (Cavalli et al. 2013).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
-s <- terra::rast(system.file("ex/streams.tif", package = "terra"))
+streams <- terra::rast(system.file("ex/streams.tif", package = "terra"))
 fp <- slope::flow_path(dem, s)
 plot(fp)
+}
 }

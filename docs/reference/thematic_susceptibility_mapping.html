@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">slope</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.8</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,20 +15,7 @@
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/slope.html">Get started</a></li>
-<li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/slope_1.html">Open Topography Global Datasets</a></li>
-    <li><a class="dropdown-item" href="../articles/slope_2.html">Hillshade</a></li>
-    <li><a class="dropdown-item" href="../articles/slope_3.html">Vertical Accuracy</a></li>
-    <li><a class="dropdown-item" href="../articles/slope_4.html">DEM Preprocessing</a></li>
-    <li><a class="dropdown-item" href="../articles/slope_5.html">Land Surface Parameters</a></li>
-    <li><a class="dropdown-item" href="../articles/slope_6.html">Geomorphic Change Detection</a></li>
-    <li><a class="dropdown-item" href="../articles/slope_7.html">Sediment Connectivity</a></li>
-    <li><a class="dropdown-item" href="../articles/slope_8.html">Revised Universal Soil Loss Equation</a></li>
-    <li><a class="dropdown-item" href="../articles/slope_9.html">Thematic Susceptibility Modeling</a></li>
-  </ul></li>
+      <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
@@ -77,19 +64,19 @@
 
 
 <dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>Input stack raster files.</p></dd>
+<dd><p>Input stack raster</p></dd>
 
 
 <dt id="arg-y">y<a class="anchor" aria-label="anchor" href="#arg-y"></a></dt>
-<dd><p>Input samples (vector files) in terra or sf package R.</p></dd>
+<dd><p>Input samples (vector files)</p></dd>
 
 
 <dt id="arg-target-col">target_col<a class="anchor" aria-label="anchor" href="#arg-target-col"></a></dt>
-<dd><p>Numeric. Target field of occurrence.</p></dd>
+<dd><p>Target field of occurrence</p></dd>
 
 
 <dt id="arg-p">p<a class="anchor" aria-label="anchor" href="#arg-p"></a></dt>
-<dd><p>Numeric. Regarding the number of samples representing the non-occurrence of events, it is suggested, in order to balance the sample set, to use a sample size equal to the number of event occurrences.</p></dd>
+<dd><p>Regarding the number of samples representing the non-occurrence of events, it is suggested, in order to balance the sample set, to use a sample size equal to the number of event occurrences.</p></dd>
 
 
 <dt id="arg-drop-cols">drop_cols<a class="anchor" aria-label="anchor" href="#arg-drop-cols"></a></dt>
@@ -97,7 +84,7 @@
 
 
 <dt id="arg-k-folds">k_folds<a class="anchor" aria-label="anchor" href="#arg-k-folds"></a></dt>
-<dd><p>Numeric. Number of folds or number of resampling iterations, using cross-validation method.</p></dd>
+<dd><p>Number of folds or number of resampling iterations, using cross-validation method.</p></dd>
 
 
 <dt id="arg-method">method<a class="anchor" aria-label="anchor" href="#arg-method"></a></dt>
@@ -105,15 +92,15 @@
 
 
 <dt id="arg-mtry">mtry<a class="anchor" aria-label="anchor" href="#arg-mtry"></a></dt>
-<dd><p>Numeric. Randomly selected predictors</p></dd>
+<dd><p>Randomly selected predictors</p></dd>
 
 
 <dt id="arg-ntree">ntree<a class="anchor" aria-label="anchor" href="#arg-ntree"></a></dt>
-<dd><p>Numeric. Decision tree number</p></dd>
+<dd><p>Decision tree number</p></dd>
 
 
 <dt id="arg-cost">cost<a class="anchor" aria-label="anchor" href="#arg-cost"></a></dt>
-<dd><p>Numeric. Constraint violation cost, where 'C' is the regularization parameter.</p></dd>
+<dd><p>Constraint violation cost, where 'C' is the regularization parameter.</p></dd>
 
 
 <dt id="arg-preprocess">preProcess<a class="anchor" aria-label="anchor" href="#arg-preprocess"></a></dt>
@@ -121,40 +108,39 @@
 
 
 <dt id="arg-n-class">n_class<a class="anchor" aria-label="anchor" href="#arg-n-class"></a></dt>
-<dd><p>Numeric. The positive class value for the confusion matrix (e.g., 0 for non-occurrence and 1 for occurrence).</p></dd>
+<dd><p>The positive class value for the confusion matrix (e.g., 0 for non-occurrence and 1 for occurrence).</p></dd>
 
 
 <dt id="arg-predict">predict<a class="anchor" aria-label="anchor" href="#arg-predict"></a></dt>
-<dd><p>Numeric. Predicted thematic susceptibility status, where 1 indicates non-occurrence and 2 indicates occurrence.</p></dd>
+<dd><p>Predicted thematic susceptibility status, where 0 indicates non-occurrence and 1 indicates occurrence.</p></dd>
 
 
 <dt id="arg-path-metrics">path_metrics<a class="anchor" aria-label="anchor" href="#arg-path-metrics"></a></dt>
-<dd><p>Character. Path to save the machine learning model metrics in tabular format.</p></dd>
+<dd><p>Path to save the machine learning model metrics in tabular format.</p></dd>
 
 
 <dt id="arg-path-var-imp">path_var_imp<a class="anchor" aria-label="anchor" href="#arg-path-var-imp"></a></dt>
-<dd><p>Character. Path to save the machine learning model variable importance in tabular format.</p></dd>
+<dd><p>Path to save the machine learning model variable importance in tabular format.</p></dd>
 
 
 <dt id="arg-path-prediction">path_prediction<a class="anchor" aria-label="anchor" href="#arg-path-prediction"></a></dt>
-<dd><p>Character. Path to save the susceptibility prediction in raster/matrix format.</p></dd>
+<dd><p>Path to save the susceptibility prediction in raster/matrix format.</p></dd>
 
 </dl></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/trinker/pacman" class="external-link">pacman</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html" class="external-link">p_load</a></span><span class="op">(</span><span class="va">terra</span>, <span class="va">slope</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://marquesfilhojp.github.io/slope/">slope</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">rasters</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/stack.tif"</span>, package <span class="op">=</span> <span class="st">"terra"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> [rast] filename is empty. Provide a valid filename</span>
 <span class="r-in"><span><span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/vect.html" class="external-link">vect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"ex/samples.shp"</span>, package <span class="op">=</span> <span class="st">"terra"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> [vect] file does not exist: </span>
 <span class="r-in"><span><span class="va">tsm</span> <span class="op">&lt;-</span> <span class="fu">slope</span><span class="fu">::</span><span class="fu">thematic_susceptibility_mapping</span><span class="op">(</span><span class="va">rasters</span>, <span class="va">samples</span>, <span class="st">"classes"</span>, <span class="fl">0.7</span>, <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">15</span><span class="op">)</span>, <span class="fl">5</span>, <span class="st">"rf"</span>, <span class="fl">10</span>, <span class="fl">1000</span>, <span class="cn">NULL</span>,</span></span>
 <span class="r-in"><span>                                             <span class="st">"nzv"</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="st">"ex/metrics.txt"</span>, <span class="st">"ex/var_imp.txt"</span>, <span class="st">"ex/predict.tif"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in h(simpleError(msg, call)):</span> error in evaluating the argument 'x' in selecting a method for function 'extract': object 'rasters' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'rasters' not found</span>
 <span class="r-in"><span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">tsm</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in h(simpleError(msg, call)):</span> error in evaluating the argument 'x' in selecting a method for function 'plot': object 'tsm' not found</span>
-<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -166,7 +152,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

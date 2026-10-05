@@ -1,12 +1,12 @@
 #'Transformation (Normalization) Curvature
 #'
-#'Curvature normalization, based in Evans (1972) and Csillik et al. (2015)
+#'Curvature normalization based in Evans (1972) and Csillik et al. (2015)
 #'
-#'@param x Input DEM raster file.
-#'@param sp_range Number of neighbor cells for multiscalar analysis.
-#'@param crs Input geodesic reference systems.
-#'@param k Kurtosis close to 0.
-#'@param type Choice between Profile Curvature [0] or Plan Curvature [1].
+#'@param x Input DEM raster
+#'@param w Number of cells for the window size
+#'@param crs Coordinate reference system (e.g., 'EPSG:5880')
+#'@param k Kurtosis close to 0
+#'@param type Profile curvature [0] or Plan curvature [1]
 #'
 #'@examples
 #'\dontrun{
@@ -17,11 +17,11 @@
 #'plot(tc)
 #'}
 #'@export
-transformed_curvature <- function(x, sp_range, k, crs, type){
+transformed_curvature <- function(x, w, k, crs, type){
   if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){
     stop("Argument 'x' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
-  } else if(missing(sp_range) || is.null(sp_range) || !is.numeric(sp_range)){
-    stop("Argument 'sp_range' must be provided and be a numeric value.", call. = FALSE)
+  } else if(missing(w) || is.null(w) || !is.numeric(w)){
+    stop("Argument 'w' must be provided and be a numeric value.", call. = FALSE)
   } else if(missing(k) || is.null(k) || !is.numeric(k)){
     stop("Argument 'k' must be provided and be a numeric scaling factor.", call. = FALSE)
   } else if(missing(crs) || is.null(crs)){
@@ -32,16 +32,16 @@ transformed_curvature <- function(x, sp_range, k, crs, type){
     if(type == 0){
       x <- x|>
         terra::project(crs)|>
-        MultiscaleDTM::Qfit(w = c(3,3), unit = "degrees", metrics = "profc", na.rm = T)|>
-        terra::focal(w = sp_range, fun = "mean", na.rm = T)
+        MultiscaleDTM::Qfit(w = c(3,3), unit = "degrees", metrics = "profc", na.rm = TRUE)|>
+        terra::focal(w = w, fun = "mean", na.rm = TRUE)
       tc <- atan(k * x)
       names(tc) <- "transformed_profc"
       return(tc)
     } else if(type == 1){
       x <- x|>
         terra::project(crs)|>
-        MultiscaleDTM::Qfit(w = c(3,3), unit = "degrees", metrics = "planc", na.rm = T)|>
-        terra::focal(w = sp_range, fun = "mean", na.rm = T)
+        MultiscaleDTM::Qfit(w = c(3,3), unit = "degrees", metrics = "planc", na.rm = TRUE)|>
+        terra::focal(w = w, fun = "mean", na.rm = TRUE)
       tc <- atan(k * x)
       names(tc) <- "transformed_planc"
       return(tc)

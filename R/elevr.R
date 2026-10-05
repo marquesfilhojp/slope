@@ -1,20 +1,23 @@
-#'elevr
+#'Elevr
 #'
 #'This function provides access to global raster elevation data from the OpenTopography API.
 #'
-#'@param dem Currently supports "SRTMGL3", "SRTMGL1", "SRTMGL1_E", "AW3D30", "AW3D30_E", "SRTM15Plus", "NASADEM", "COP30", "COP90", "EU_DTM", "GEDI_L3", "GEBCOIceTopo", "GEBCOSubIceTopo", "CA_MRDEM_DTM", "CA_MRDEM_DSM", "ANADEM", "GEDTM30" from the OpenTopography API global datasets.
-#'@param aoi Defines the area of interest to crop/bound the elevation data, in *sf* format.
-#'@param api_key OpenTopography API key.
-#'@param output_file File path to save the elevation data in raster format.
+#'@param dem Currently supports: "SRTMGL3", "SRTMGL1", "SRTMGL1_E", "AW3D30", "AW3D30_E",
+#'"SRTM15Plus", "NASADEM", "COP30", "COP90", "EU_DTM", "GEDI_L3", "GEBCOIceTopo", "GEBCOSubIceTopo",
+#'"CA_MRDEM_DTM", "CA_MRDEM_DSM", "ANADEM", "GEDTM30" from the OpenTopography API global datasets.
+#'@param aoi Defines the area of interest to crop/bound the elevation data, in *sf* format
+#'@param api_key OpenTopography API key
+#'@param output_file File path to save the elevation data in raster format
 #'
 #'@examples
 #'\dontrun{
-#'library(pacman)
-#'p_load(sf, slope, terra)
+#'library(sf)
+#'library(slope)
 #'aoi <- sf::read_sf('ex/aoi.shp')
-#'data <- slope::elevr('GEDTM30', aoi, api_key, 'ex/dem.tif')
-#'plot(data)
+#'dem <- slope::elevr('GEDTM30', aoi, api_key, 'ex/dem.tif')
+#'plot(dem)
 #'}
+#'@export
 elevr <- function(dem, aoi, api_key, output_file){
   if(missing(dem) || is.null(dem) || !is.character(dem)){
     stop("Argument 'dem' must be provided and be a character string.", call. = FALSE)
@@ -46,6 +49,6 @@ elevr <- function(dem, aoi, api_key, output_file){
   dem <- terra::rast(dem_file)|>
       terra::project('EPSG:4326')|>
       terra::crop(x, mask = T)
-    return(dem)
+  return(dem)
   }
 }

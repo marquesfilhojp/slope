@@ -4,19 +4,19 @@
 \alias{valleys}
 \title{Valleys}
 \usage{
-valleys(x, sp_range, c)
+valleys(x, w, type)
 }
 \arguments{
-\item{x}{Input DEM raster file.}
+\item{x}{Input DEM raster}
 
-\item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
+\item{w}{Number of cells for the window size}
 
-\item{type}{Numeric. Each number represents a specific landform, for example: (1) Flat-bottomed Valleys, (2) Open Valleys, and (3) Incised Valleys}
+\item{type}{Each number represents a specific landform, for example: (1) Flat-bottomed valleys, (2) Open valleys, and (3) Incised valleys.}
 }
 \description{
 Detects different types of valleys, based on Silveira and Silveira (2020).
 The primary difference is the use of a rectangular local neighborhood shape instead
-of a circular one, in calculus of Black Top Hat (BTW) (Rodriguez et al. 2002).
+of a circular one, in the calculation of Black Top Hat (BTH) (Rodriguez et al., 2002).
 For more satisfactory results, it is recommended to define the
-moving window based on the minimum mappable area and function fill()
+moving window based on the minimum mappable area and the fill() function.
 }

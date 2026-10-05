@@ -4,20 +4,24 @@
 \alias{topographic_wetness_index}
 \title{Topographic Wetness Index}
 \usage{
-topographic_wetness_index(x)
+topographic_wetness_index(x, crs, type)
 }
 \arguments{
-\item{x}{Input DEM raster file.}
+\item{x}{Input DEM raster}
 
-\item{type}{Float. 'cells', 'sca' and 'ca'.}
+\item{crs}{Coordinate reference system (e.g., 'EPSG:5880')}
+
+\item{type}{Flow accumulation calculation type: 'cells', 'sca', or 'ca'.}
 }
 \description{
-Calculates Topographic Wetness Index, based in Beven and Kirbky (1979).
+Calculates Topographic Wetness Index, based on Beven and Kirkby (1979).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
-twi <- slope::topographic_wetness_index(dem, 'sca')
+twi <- slope::topographic_wetness_index(dem, 'EPSG:5880', 'sca')
 plot(twi)
+}
 }

@@ -4,14 +4,14 @@
 \alias{slopeforms}
 \title{Slope Forms}
 \usage{
-slopeforms(x, sp_range, crs)
+slopeforms(x, w, crs)
 }
 \arguments{
 \item{x}{Input DEM raster file.}
 
-\item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
+\item{w}{Number of cells for the window size}
 
-\item{crs}{Input geodesic reference systems.}
+\item{crs}{Coordinate reference system (e.g., 'EPSG:5880')}
 }
 \description{
 Detects the nine landform elements based on Dikau (1989).
@@ -31,9 +31,11 @@ Each code refers to a specific pattern of slope forms:
 }
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
-sf <- slope::slopeforms(dem, 7, 'EPSG:5880')
-
+slope_forms <- slope::slopeforms(dem, 7, 'EPSG:5880')
+plot(slope_forms)
+}
 }

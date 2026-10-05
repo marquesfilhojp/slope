@@ -9,22 +9,24 @@ rci(x, sp_range, crs, aoi, unit)
 \arguments{
 \item{x}{Input DEM raster file.}
 
-\item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
+\item{crs}{Coordinate reference system (e.g., 'EPSG:5880')}
 
-\item{crs}{Input geodesic reference systems.}
-
-\item{aoi}{Area of interest in spatvect.}
+\item{aoi}{Area of interest}
 
 \item{unit}{Metrics units in square kilometers.}
+
+\item{w}{Number of cells for the window size}
 }
 \description{
 Calculates the Roughness Concentration Index (RCI) based on the methodology of Sampaio and Augustin (2014).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 aoi <- terra:vect(system.file("ex/aoi.shp", package = "terra"))
 dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
-r <- slope::rci(dem, 300, 'EPSG:5880', aoi, 1000000)
-plot(r)
+rci <- slope::rci(dem, 300, 'EPSG:5880', aoi, 1000000)
+plot(rci)
+}
 }

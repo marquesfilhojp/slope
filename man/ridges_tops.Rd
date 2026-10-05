@@ -7,23 +7,25 @@
 ridges_tops(x, sp_range, type)
 }
 \arguments{
-\item{x}{Input DEM raster file.}
+\item{x}{Input DEM raster}
 
-\item{sp_range}{Numeric. Number of neighbor cells for multiscalar analysis.}
+\item{type}{Each number represents a specific landform, for example: (1) Convex hilltops and Interfluves, (2) Sharp crests, and (3) Ridges}
 
-\item{type}{Numeric. Each number represents a specific landform, for example: (1) Convex Hilltops and Interfluves, (2) Sharp Crests, and (3) Ridges}
+\item{w}{Number of cells for the window size}
 }
 \description{
-Detects different types of Ridges and Tops, based on Silveira and Silveira (2020).
+Detects different types of ridges and tops, based on Silveira and Silveira (2020).
 The primary difference is the use of a rectangular local neighborhood shape instead
-of a circular one, in calculus of White Top Hat (WTH) (Rodriguez et al. 2002).
+of a circular one, in the calculation of the White Top Hat (WTH) (Rodriguez et al., 2002).
 For more satisfactory results, it is recommended to define the
 moving window based on the minimum mappable area.
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
 r <- slope::ridges_tops(dem, 7, 1)
 plot(r)
+}
 }

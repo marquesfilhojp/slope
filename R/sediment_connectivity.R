@@ -1,54 +1,52 @@
-#' Sediment Connectivity
-#'
-#'\strong{Sediment Connectivity}
+#'Sediment Connectivity
 #'
 #'Calculates sediment connectivity, based in Borelli et al. (2008).
 #'
-#'@param x Input DEM raster file.
-#'@param w C Factor reclassified based in Revised Equation Soil Loss Equation.
-#'@param sp_range Number of neighbor cells for multiscalar analysis.
-#'@param fa Input Flow Accumulation raster file.
-#'@param fp Input Flow Path raster file.
+#'@param x Input DEM raster
+#'@param c C Factor reclassified based in Revised Equation Soil Loss Equation
+#'@param w Number of cells for the window size
+#'@param flow_acc Input Flow Accumulation raster
+#'@param flow_path Input Flow Path raster
 #'
 #'@examples
 #'\dontrun{
 #'library(terra)
 #'library(slope)
 #'dem <- terra:rast(system.file("ex/elev.tif", package = "terra"))
-#'w <- terra::rast(system.file("ex/lulc.tif", package = "terra"))
-#'fa <- terra:rast(system.file("ex/accum.tif", package = "terra"))
-#'fp <- terra:rast(system.file("ex/flow_path.tif", package = "terra"))
-#'ic <- slope::sediment_connectivity(dem, 5, fa, fp)
-#'plot(ic)
+#'c <- terra::rast(system.file("ex/lulc.tif", package = "terra"))
+#'flow_acc <- terra:rast(system.file("ex/accum.tif", package = "terra"))
+#'flow_path <- terra:rast(system.file("ex/flow_path.tif", package = "terra"))
+#'sc <- slope::sediment_connectivity(dem, 5, fa, fp)
+#'plot(sc)
 #'}
 #'@export
-sediment_connectivity <- function(x, w, sp_range, fa, fp){
+sediment_connectivity <- function(x, c, w, flow_acc, flow_path){
   if(missing(x) || is.null(x) || !inherits(x, "SpatRaster")){
     stop("Argument 'x' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
-  } else if(missing(w) || is.null(w) || !inherits(w, "SpatRaster")){
-    stop("Argument 'w' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
-  } else if(missing(sp_range) || is.null(sp_range) || !is.numeric(sp_range)){
-    stop("Argument 'sp_range' must be provided and be a numeric value.", call. = FALSE)
-  } else if(missing(fa) || is.null(fa) || !inherits(fa, "SpatRaster")){
-    stop("Argument 'fa' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
-  } else if(missing(fp) || is.null(fp) || !inherits(fp, "SpatRaster")){
-    stop("Argument 'fp' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
-  } else if(!terra::same.crs(x, fa) || !terra::same.crs(x, fp) || !terra::same.crs(x, w)){
-    stop("Input rasters 'x', 'w', 'fa', and 'fp' must have the same coordinate reference system (CRS).", call. = FALSE)
+  } else if(missing(c) || is.null(c) || !inherits(c, "SpatRaster")){
+    stop("Argument 'c' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
+  } else if(missing(w) || is.null(w) || !is.numeric(w)){
+    stop("Argument 'w' must be provided and be a numeric value.", call. = FALSE)
+  } else if(missing(flow_acc) || is.null(flow_acc) || !inherits(flow_acc, "SpatRaster")){
+    stop("Argument 'flow_acc' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
+  } else if(missing(flow_path) || is.null(flow_path) || !inherits(flow_path, "SpatRaster")){
+    stop("Argument 'flow_path' must be provided and inherit from class 'SpatRaster'.", call. = FALSE)
+  } else if(terra::crs(x) != terra::crs(flow_acc) || terra::crs(x) != terra::crs(flow_path) || terra::crs(x) != terra::crs(c)){
+    stop("Input rasters 'x', 'c', 'flow_acc', and 'flow_path' must have the same coordinate reference system (CRS).", call. = FALSE)
   } else{
-    s <- x |>
+    slope_angle <- x |>
       MultiscaleDTM::Qfit(w = c(3,3), unit = "radians", metrics = "slope", na.rm = T)|>
       tan()|>
       terra::clamp(lower = 0.001, upper = 1.0)
-    mean_slope <- terra::focal(s, sp_range, 'mean')
+    mean_slope <- terra::focal(slope_angle, w, 'mean')
 
-    d_up <- w * mean_slope * sqrt(fa)
-    d_dn <- fp / (w * s)
+    d_up <- c * mean_slope * sqrt(flow_acc)
+    d_dn <- fp / (c * slope_angle)
 
-    ic <- log10(d_up / d_dn)
-    names(ic) <- "ic"
+    sc <- log10(d_up / d_dn)
+    names(sc) <- "sediment_connectivity"
 
-    return(ic)
+    return(sc)
   }
 }
 

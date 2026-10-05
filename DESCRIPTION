@@ -1,7 +1,7 @@
 Package: slope
 Type: Package
-Title: An R Package for Identify slope patterns and process
-Version: 0.5.3
+Title: An R Package for Geomorphometric Analysis
+Version: 0.5.8
 Authors@R: c(person("Jorge da Paixão", "Marques Filho", email = "marquesfilho.j.p@gmail.com", role = c("aut", "cre")),
              person("Carla Bernadete", "Madureira Cruz", email = "carlamad@gmail.com", role = "ctb"),
              person("Antonio Jose", "Teixeira Guerra", email = "antoniotguerra@gmail.com", role = "ctb"))
@@ -11,7 +11,6 @@ URL: https://marquesfilhojp.github.io/slope/
 BugReports: https://github.com/marquesfilhojp/slope/issues
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.3.9000
 Depends: 
     R(>= 4.0.0),
     caret,
@@ -21,9 +20,11 @@ Depends:
     MultiscaleDTM,
     sf,
     spatstat,
+    spatstat.explore,
     terra,
     whitebox
 Suggests: 
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Config/roxygen2/version: 8.1.0

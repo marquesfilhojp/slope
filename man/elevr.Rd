@@ -4,26 +4,28 @@
 \alias{elevr}
 \title{elevr}
 \usage{
-elevr(dem_type, aoi, api_key, output_file)
+elevr(dem, aoi, api_key, output_file)
 }
 \arguments{
-\item{dem_type}{Currently supports "SRTMGL3", "SRTMGL1", "SRTMGL1_E", "AW3D30", "AW3D30_E", "SRTM15Plus", "NASADEM", "COP30", "COP90", "EU_DTM", "GEDI_L3", "GEBCOIceTopo", "GEBCOSubIceTopo", "CA_MRDEM_DTM", "CA_MRDEM_DSM", "ANADEM", "GEDTM30" from the OpenTopography API global datasets.}
+\item{dem}{Currently supports: "SRTMGL3", "SRTMGL1", "SRTMGL1_E", "AW3D30", "AW3D30_E",
+"SRTM15Plus", "NASADEM", "COP30", "COP90", "EU_DTM", "GEDI_L3", "GEBCOIceTopo", "GEBCOSubIceTopo",
+"CA_MRDEM_DTM", "CA_MRDEM_DSM", "ANADEM", "GEDTM30" from the OpenTopography API global datasets.}
 
-\item{aoi}{Defines the area of interest to crop/bound the elevation data, in *sf* format.}
+\item{aoi}{Defines the area of interest to crop/bound the elevation data, in *sf* format}
 
-\item{api_key}{The OpenTopography API key.}
+\item{api_key}{OpenTopography API key}
 
-\item{output_file}{File path to save the elevation data in raster format.}
+\item{output_file}{File path to save the elevation data in raster format}
 }
 \description{
 This function provides access to global raster elevation data from the OpenTopography API.
 }
 \examples{
 \dontrun{
-library(pacman)
-p_load(sf, slope, terra)
+library(sf)
+library(slope)
 aoi <- sf::read_sf('ex/aoi.shp')
-data <- slope::elevr('GEDTM30', aoi, api_key, 'ex/dem.tif')
-plot(data)
+dem <- slope::elevr('GEDTM30', aoi, api_key, 'ex/dem.tif')
+plot(dem)
 }
 }

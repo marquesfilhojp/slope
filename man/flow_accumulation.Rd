@@ -7,17 +7,19 @@
 flow_accumulation(x, type)
 }
 \arguments{
-\item{x}{Input DEM raster file.}
+\item{x}{Input DEM raster}
 
-\item{type}{Float. 'cells', 'sca' and 'ca'.}
+\item{type}{Flow accumulation calculation type: 'cells', 'sca', or 'ca'}
 }
 \description{
 Performs the flow accumulation in DEMs based on the wbt_flow_accumulation_full_workflow() function (Lindsay, 2016) for calculates sediment connectivity (Cavalli et al. 2013).
 }
 \examples{
+\dontrun{
 library(terra)
 library(slope)
 dem <- terra::rast(system.file("ex/elev.tif", package = "terra"))
 fa <- slope::flow_accumulation(dem, 'sca')
 plot(fa)
+}
 }
